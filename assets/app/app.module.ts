@@ -7,6 +7,7 @@ import { AppComponent } from "./app.component";
 import { NavbarComponent } from './navbar/navbar.component';
 import { TableComponent } from './table/table.component';
 import { ManualyAddComponent } from './manualy-add/manualy-add.component';
+import { ManualyAddService } from './manualy-add/manualy-add.service';
 import { ModalComponent } from './manualy-add/modal/modal.component';
 
 @NgModule({
@@ -22,7 +23,9 @@ import { ModalComponent } from './manualy-add/modal/modal.component';
         FormsModule,
         ReactiveFormsModule
     ],
-    providers: [],
+    providers: [
+      ManualyAddService
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {

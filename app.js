@@ -11,6 +11,7 @@ var grantRoutes = require('./routes/grant');
 
 var app = express();
 mongoose.connect('mongodb://siteAPI:BSYfhCrU4vHRNQTc@ds259897.mlab.com:59897/my-database');
+// mongoose.connect('mongodb://localhost:27017/my-database');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

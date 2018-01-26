@@ -24,7 +24,11 @@ export class ManualyAddComponent implements OnInit {
       null,
       null
     );
-    this.manualyAddService.addGrant(grant);
+    this.manualyAddService.addGrant(grant)
+      .subscribe(
+          data => console.log(data),
+          error => console.error(error)
+        );
     this.grantForm.reset();
   }
 

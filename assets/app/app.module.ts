@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from "./app.component";
 import { NavbarComponent } from './navbar/navbar.component';
 import { TableComponent } from './table/table.component';
+import { TableService } from './table/table.service';
 import { ManualyAddComponent } from './manualy-add/manualy-add.component';
 import { ManualyAddService } from './manualy-add/manualy-add.service';
 import { ModalComponent } from './manualy-add/modal/modal.component';
@@ -21,10 +22,12 @@ import { ModalComponent } from './manualy-add/modal/modal.component';
     imports: [
         BrowserModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        HttpModule
     ],
     providers: [
-      ManualyAddService
+      ManualyAddService,
+      TableService
     ],
     bootstrap: [AppComponent]
 })

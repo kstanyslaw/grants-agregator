@@ -3,23 +3,14 @@ import {Http, Response, Headers} from '@angular/http';
 import 'rxjs/Rx';
 import {Observable} from 'rxjs';
 
-import { Grant } from './grant.model';
+import { Grant } from '../manualy-add/grant.model';
 
 @Injectable()
-export class ManualyAddService {
+export class TableService {
 
   private grants: Grant[] = [];
 
   constructor(private http: Http) {}
-
-  addGrant(grant: Grant) {
-    this.grants.push(grant);
-    const body = JSON.stringify(grant);
-    const headers = new Headers({'Content-Type': 'application/json'});
-    return this.http.post('http://localhost:3000/grant', body, {headers: headers})
-      .map((response: Response) => response.json())
-      .catch((error: Response) => Observable.throw(error.json()));
-  }
 
   getGrant() {
     return this.http.get('http://localhost:3000/grant')

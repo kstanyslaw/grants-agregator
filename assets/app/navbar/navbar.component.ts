@@ -9,13 +9,9 @@ export class NavbarComponent implements OnInit {
 
   isShow = false;
 
-  onClick() {
-    if (this.isShow) {
-        this.isShow = false;
-    } else {
-      this.isShow =  true;
-    }
-  }
-
   ngOnInit() {}
+
+  onEject () {
+    isShow = this.isShow;
+  }
 }

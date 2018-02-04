@@ -10,6 +10,9 @@ import { TableService } from './table/table.service';
 import { ManualyAddComponent } from './manualy-add/manualy-add.component';
 import { ManualyAddService } from './manualy-add/manualy-add.service';
 import { ModalComponent } from './manualy-add/modal/modal.component';
+import { GrantsSearchComponent } from './grants-search/grants-search.component';
+
+import { app_routing } from './app.routing';
 
 @NgModule({
     declarations: [
@@ -17,13 +20,15 @@ import { ModalComponent } from './manualy-add/modal/modal.component';
         NavbarComponent,
         TableComponent,
         ManualyAddComponent,
-        ModalComponent
+        ModalComponent,
+        GrantsSearchComponent
     ],
     imports: [
         BrowserModule,
         FormsModule,
         ReactiveFormsModule,
-        HttpModule
+        HttpModule,
+        app_routing
     ],
     providers: [
       ManualyAddService,

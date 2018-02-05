@@ -6,14 +6,14 @@
 
   <div class="collapse navbar-collapse" [ngClass]="{'show': isShow}">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Найти гранты <span class="sr-only">(current)</span></a>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/grants-search']">Найти гранты</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Как работать в системе</a>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['#']">Как работать в системе</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Партнерам</a>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['#']">Партнерам</a>
       </li>
       <li class="nav-item">
         <a class="nav-link disabled" href="#">Disabled</a>

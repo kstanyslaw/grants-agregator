@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styles:[`
       .modal {
         background-color: rgba(0, 0, 0, 0.6);
+          overflow-y:scroll;
       }
 
       .show {

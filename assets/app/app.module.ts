@@ -5,7 +5,7 @@ import { AppComponent } from "./app.component";
 import { NavbarComponent } from './navbar/navbar.component';
 import { GrantsSearchModule } from './grants-search/grants-search.module';
 
-import { app_routing } from './app.routing';
+import { AppRoutingModule } from './app.routing';
 
 @NgModule({
     declarations: [
@@ -15,7 +15,7 @@ import { app_routing } from './app.routing';
     imports: [
         BrowserModule,
         GrantsSearchModule,
-        app_routing
+        AppRoutingModule
     ],
     providers: [],
     bootstrap: [AppComponent]

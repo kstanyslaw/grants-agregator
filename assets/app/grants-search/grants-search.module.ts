@@ -8,6 +8,7 @@ import { TableComponent } from './table/table.component';
 import { ManualyAddComponent } from './manualy-add/manualy-add.component';
 import { ModalComponent } from './manualy-add/modal/modal.component';
 import { ManualyAddService } from './manualy-add/manualy-add.service';
+import { GrantDetailsComponent } from './grant-details/grant-details.component';
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import { ManualyAddService } from './manualy-add/manualy-add.service';
     GrantsSearchComponent,
     TableComponent,
     ManualyAddComponent,
-    ModalComponent
+    ModalComponent,
+    GrantDetailsComponent
   ],
   providers: [
     ManualyAddService
@@ -29,7 +31,8 @@ import { ManualyAddService } from './manualy-add/manualy-add.service';
     GrantsSearchComponent,
     TableComponent,
     ManualyAddComponent,
-    ModalComponent
+    ModalComponent,
+    GrantDetailsComponent
   ]
 })
 export class GrantsSearchModule { }

@@ -1,11 +1,19 @@
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { GrantsSearchComponent } from './grants-search/grants-search.component';
+import { GrantDetailsComponent } from './grants-search/grant-details/grant-details.component';
 
-const app_routes: Routes = [
+const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/grants-search' },
   { path: 'grants-search', component: GrantsSearchComponent },
+  { path: 'details/:url', component: GrantDetailsComponent},
   { path: '**', pathMatch: 'full', redirectTo: '' }
 ];
 
-export const app_routing = RouterModule.forRoot(app_routes);
+@NgModule({
+  imports: [ RouterModule.forRoot(routes) ],
+  exports: [ RouterModule ]
+})
+
+export class AppRoutingModule {}

@@ -9,7 +9,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let grant of grants">
+          <tr *ngFor="let grant of grants" (click)="onClick(grant.name)">
             <td>{{ grant.name }}</td>
             <td>{{ grant.price }}</td>
           </tr>

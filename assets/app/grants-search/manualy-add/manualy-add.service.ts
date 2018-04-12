@@ -16,13 +16,13 @@ export class ManualyAddService {
     this.grants.push(grant);
     const body = JSON.stringify(grant);
     const headers = new Headers({'Content-Type': 'application/json'});
-    return this.http.post('http://localhost:3000/grant', body, {headers: headers})
+    return this.http.post('http://https://grants-agregator.herokuapp.com/grant', body, {headers: headers})
       .map((response: Response) => response.json())
       .catch((error: Response) => Observable.throw(error.json()));
   }
 
   getGrant() {
-    return this.http.get('http://localhost:3000/grant')
+    return this.http.get('http://https://grants-agregator.herokuapp.com/grant')
       .map((response: Response) => {
         const grants = response.json().obj;
         let transformedGrants: Grant[] = [];

@@ -13,7 +13,7 @@ export class TableService {
   constructor(private http: Http) {}
 
   getGrant() {
-    return this.http.get('http://localhost:3000/grant')
+    return this.http.get('http://https://grants-agregator.herokuapp.com/grant')
       .map((response: Response) => {
         const grants = response.json().obj;
         let transformedGrants: Grant[] = [];

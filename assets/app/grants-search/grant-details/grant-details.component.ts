@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: 'grant-details.component.html',
 })
 export class GrantDetailsComponent implements OnInit {
+
   constructor(private route: ActivatedRoute) {  }
 
   grantUrl: string;

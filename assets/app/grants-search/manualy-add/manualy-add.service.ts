@@ -4,11 +4,14 @@ import 'rxjs/Rx';
 import {Observable} from 'rxjs';
 
 import { Grant } from './grant.model';
+import { VARIABLES } from '../../../../var'
 
 @Injectable()
 export class ManualyAddService {
 
   private grants: Grant[] = [];
+
+  private variables: any = VARIABLES;
 
   constructor(private http: Http) {}
 
@@ -16,13 +19,15 @@ export class ManualyAddService {
     this.grants.push(grant);
     const body = JSON.stringify(grant);
     const headers = new Headers({'Content-Type': 'application/json'});
-    return this.http.post('http://localhost:3000/grant', body, {headers: headers})
+    // return this.http.post('http://localhost:3000/grant', body, {headers: headers})
+    return this.http.post(this.variables.api + 'grant', body, {headers: headers})
       .map((response: Response) => response.json())
       .catch((error: Response) => Observable.throw(error.json()));
   }
 
   getGrant() {
-    return this.http.get('http://localhost:3000/grant')
+    // return this.http.get('http://localhost:3000/grant')
+    return this.http.get(this.variables.api + 'grant')
       .map((response: Response) => {
         const grants = response.json().obj;
         let transformedGrants: Grant[] = [];

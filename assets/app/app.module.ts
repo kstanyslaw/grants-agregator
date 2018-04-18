@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from "./app.component";
 import { NavbarComponent } from './navbar/navbar.component';
 import { GrantsSearchModule } from './grants-search/grants-search.module';
+import { GrantDetailsModule } from './grant-details/grant-details.module';
 
 import { AppRoutingModule } from './app.routing';
 
@@ -15,7 +16,8 @@ import { AppRoutingModule } from './app.routing';
     imports: [
         BrowserModule,
         GrantsSearchModule,
-        AppRoutingModule
+        AppRoutingModule,
+        GrantDetailsModule
     ],
     providers: [],
     bootstrap: [AppComponent]

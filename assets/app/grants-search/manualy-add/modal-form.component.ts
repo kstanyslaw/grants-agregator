@@ -2,18 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { Grant } from '../../grant.model';
-import { ManualyAddService } from './manualy-add.service';
+import { ModalFormService } from './modal-form.service';
 
 @Component({
-  selector: 'manualy-add-app',
-  templateUrl: 'manualy-add.component.html',
-  styleUrls: ['manualy-add.component.css']
+  selector: 'modal-form-app',
+  templateUrl: 'modal-form.component.html',
+  styleUrls: ['modal-form.component.css']
 })
-export class ManualyAddComponent implements OnInit {
+export class ModalFormComponent implements OnInit {
 
   grantForm: FormGroup;
 
-  constructor(private manualyAddService: ManualyAddService) {}
+  constructor(private modalFormService: ModalFormService) {}
 
   onSubmit() {
     var grant = new Grant(
@@ -24,7 +24,7 @@ export class ManualyAddComponent implements OnInit {
       null,
       null
     );
-    this.manualyAddService.addGrant(grant)
+    this.modalFormService.addGrant(grant)
       .subscribe(
           data => console.log(data),
           error => console.error(error)

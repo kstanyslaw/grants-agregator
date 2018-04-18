@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
-import { Grant } from './grant.model';
+import { Grant } from '../../grant.model';
 import { ManualyAddService } from './manualy-add.service';
 
 @Component({

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Grant } from '../manualy-add/grant.model';
+import { Grant } from '../../grant.model';
 // import { TableService } from './table.service';
 import { ManualyAddService } from '../manualy-add/manualy-add.service';
 

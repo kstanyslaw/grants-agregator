@@ -7,7 +7,7 @@ import { GrantsSearchComponent } from './grants-search.component';
 import { TableComponent } from './table/table.component';
 import { ModalFormComponent } from './manualy-add/modal-form/modal-form.component';
 import { ModalComponent } from './manualy-add/modal/modal.component';
-import { ModalFormService } from './manualy-add/modal-form.service';
+import { GrantsSearchService } from './grants-search.service'
 
 @NgModule({
   imports: [
@@ -23,7 +23,7 @@ import { ModalFormService } from './manualy-add/modal-form.service';
     ModalComponent,
   ],
   providers: [
-    ModalFormService
+    GrantsSearchService
   ],
   exports: [
     GrantsSearchComponent,

@@ -3,11 +3,11 @@ import {Http, Response, Headers} from '@angular/http';
 import 'rxjs/Rx';
 import {Observable} from 'rxjs';
 
-import { Grant } from '../../grant.model';
-import { VARIABLES } from '../../../../var'
+import { Grant } from '../grant.model';
+import { VARIABLES } from '../../../var'
 
 @Injectable()
-export class ModalFormService {
+export class GrantsSearchService {
 
   private grants: Grant[] = [];
 

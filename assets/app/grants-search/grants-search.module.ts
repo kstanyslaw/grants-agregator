@@ -5,7 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { GrantsSearchComponent } from './grants-search.component';
 import { TableComponent } from './table/table.component';
-import { ModalFormComponent } from './manualy-add/modal-form.component';
+import { ModalFormComponent } from './manualy-add/modal-form/modal-form.component';
 import { ModalComponent } from './manualy-add/modal/modal.component';
 import { ModalFormService } from './manualy-add/modal-form.service';
 

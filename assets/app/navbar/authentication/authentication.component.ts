@@ -17,6 +17,6 @@ import { Component } from "@angular/core";
 
 export class AuthenticationComponent {
     
-    isShow = true;
+    isShow = false;
 
 }

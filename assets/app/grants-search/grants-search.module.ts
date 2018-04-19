@@ -8,6 +8,7 @@ import { TableComponent } from './table/table.component';
 import { ModalFormComponent } from './manualy-add/modal-form/modal-form.component';
 import { ModalComponent } from './manualy-add/modal/modal.component';
 import { GrantsSearchService } from './grants-search.service'
+import { ManualyAddComponent } from './manualy-add/manualy-add.component';
 
 @NgModule({
   imports: [
@@ -21,6 +22,7 @@ import { GrantsSearchService } from './grants-search.service'
     TableComponent,
     ModalFormComponent,
     ModalComponent,
+    ManualyAddComponent
   ],
   providers: [
     GrantsSearchService
@@ -30,6 +32,7 @@ import { GrantsSearchService } from './grants-search.service'
     TableComponent,
     ModalFormComponent,
     ModalComponent,
+    ManualyAddComponent
   ]
 })
 export class GrantsSearchModule { }

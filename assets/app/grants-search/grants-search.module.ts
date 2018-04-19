@@ -7,7 +7,7 @@ import { GrantsSearchComponent } from './grants-search.component';
 import { TableComponent } from './table/table.component';
 import { ModalFormComponent } from './manualy-add/modal-form/modal-form.component';
 import { ModalComponent } from './manualy-add/modal/modal.component';
-import { ModalFormService } from './modal-form.service';
+import { ModalFormService } from './grants-search.service'
 
 @NgModule({
   imports: [

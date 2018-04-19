@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 
 import { Grant } from '../../grant.model';
 // import { TableService } from './table.service';
-import { ModalFormService } from '../modal-form.service';
+import { ModalFormService } from '../grants-search.service';
 
 @Component({
   selector: 'table-app',

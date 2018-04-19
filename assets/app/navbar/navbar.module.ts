@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { NavbarComponent } from "./navbar.component";
 import { AuthenticationComponent } from "./authentication/authentication.component";
 import { AppRoutingModule } from "../app.routing";
+import { LoginComponent } from "./authentication/login/login.component";
 
 @NgModule({
     imports: [
@@ -12,14 +13,16 @@ import { AppRoutingModule } from "../app.routing";
       ],
       declarations: [
         NavbarComponent,
-        AuthenticationComponent
+        AuthenticationComponent,
+        LoginComponent
       ],
       providers: [
 
       ],
       exports: [
         NavbarComponent,
-        AuthenticationComponent
+        AuthenticationComponent,
+        LoginComponent
       ]
 })
 export class NavbarModule { }

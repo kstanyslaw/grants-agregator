@@ -1,1 +1,18 @@
-<p>auth comp</p>
+<button type="button" class="btn btn-outline-light">Login</button>
+
+<div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" [ngClass]="{'show': isShow}">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+        <div class="modal-content">
+      
+        <div class="modal-header">
+            <h4 class="modal-title">Войти</h4>
+            <button type="button" class="close" aria-label="Close" (click)="isShow = false">
+            <span aria-hidden="true">×</span>
+            </button>
+            </div>
+            <div class="modal-body">
+                <login-app></login-app>
+            </div>
+          </div>
+        </div>
+      </div>

@@ -1,0 +1,13 @@
+button {
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+.modal {
+    background-color: rgba(0, 0, 0, 0.6);
+    overflow-y:scroll;
+}
+
+.show {
+    display: block;
+}

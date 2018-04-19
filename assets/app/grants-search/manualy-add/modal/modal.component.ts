@@ -16,7 +16,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ModalComponent implements OnInit {
 
-  isShow = true;
+  isShow = false;
 
   constructor() {  }
 

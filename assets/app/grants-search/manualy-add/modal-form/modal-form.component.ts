@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { Grant } from '../../../grant.model';
-import { ModalFormService } from '../modal-form.service';
+import { ModalFormService } from '../../modal-form.service';
 
 @Component({
   selector: 'modal-form-app',

@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 
 import { Grant } from '../../grant.model';
 // import { TableService } from './table.service';
-import { ManualyAddService } from '../manualy-add/manualy-add.service';
+import { ModalFormService } from '../manualy-add/modal-form.service';
 
 @Component({
   selector: 'table-app',
@@ -15,10 +15,10 @@ export class TableComponent implements OnInit {
   grants: Grant[] = [];
 
   // constructor(private tableService: TableService) {}
-  constructor(private manualyAddService: ManualyAddService, private router: Router) {}
+  constructor(private modalFormService: ModalFormService, private router: Router) {}
 
   ngOnInit() {
-    this.manualyAddService.getGrant()
+    this.modalFormService.getGrant()
     .subscribe(
       (grants: Grant[]) => {
         this.grants = grants;

@@ -7,7 +7,7 @@ import { Grant } from '../../grant.model';
 import { VARIABLES } from '../../../../var'
 
 @Injectable()
-export class ManualyAddService {
+export class ModalFormService {
 
   private grants: Grant[] = [];
 

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { Grant } from '../../../grant.model';
-import { ModalFormService } from '../../grants-search.service';
+import { GrantsSearchService } from '../../grants-search.service';
 
 @Component({
   selector: 'modal-form-app',
@@ -13,7 +13,7 @@ export class ModalFormComponent implements OnInit {
 
   grantForm: FormGroup;
 
-  constructor(private modalFormService: ModalFormService) {}
+  constructor(private grantsSearchService: GrantsSearchService) {}
 
   onSubmit() {
     var grant = new Grant(
@@ -24,7 +24,7 @@ export class ModalFormComponent implements OnInit {
       null,
       null
     );
-    this.modalFormService.addGrant(grant)
+    this.grantsSearchService.addGrant(grant)
       .subscribe(
           data => console.log(data),
           error => console.error(error)

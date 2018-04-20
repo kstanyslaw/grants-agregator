@@ -9,12 +9,15 @@ import { FormGroup, FormControl, Validators } from "@angular/forms";
 
 export class SingupComponent implements OnInit{
 
+    passwordVisible: boolean = true;
+
     // loginForm: FormGroup;
 
     // onSubmit() {
     //     console.log(this.loginForm.value);
     //     this.loginForm.reset();
     // }
+
 
     ngOnInit() {
         // this.loginForm = new FormGroup({

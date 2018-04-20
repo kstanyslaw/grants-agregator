@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 import { NavbarComponent } from "./navbar.component";
 import { AuthenticationComponent } from "./authentication/authentication.component";
@@ -9,6 +10,8 @@ import { LoginComponent } from "./authentication/login/login.component";
 @NgModule({
     imports: [
         CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
         AppRoutingModule
       ],
       declarations: [

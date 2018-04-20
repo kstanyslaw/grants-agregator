@@ -6,6 +6,7 @@ import { NavbarComponent } from "./navbar.component";
 import { AuthenticationComponent } from "./authentication/authentication.component";
 import { AppRoutingModule } from "../app.routing";
 import { LoginComponent } from "./authentication/login/login.component";
+import { SingupComponent } from "./authentication/singup/singup.component";
 
 @NgModule({
     imports: [
@@ -17,7 +18,8 @@ import { LoginComponent } from "./authentication/login/login.component";
       declarations: [
         NavbarComponent,
         AuthenticationComponent,
-        LoginComponent
+        LoginComponent,
+        SingupComponent
       ],
       providers: [
 
@@ -25,7 +27,8 @@ import { LoginComponent } from "./authentication/login/login.component";
       exports: [
         NavbarComponent,
         AuthenticationComponent,
-        LoginComponent
+        LoginComponent,
+        SingupComponent
       ]
 })
 export class NavbarModule { }

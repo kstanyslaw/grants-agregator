@@ -1,8 +1,8 @@
 <button type="button" class="btn btn-outline-light login" (click)="isShow = true" *ngIf="isLoggedIn()">Login</button>
 <button type="button" class="btn btn-outline-light logout" *ngIf="!isLoggedIn()">Logout</button>
 
-<div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" [ngClass]="{'show': isShow}">
-    <div class="modal-dialog modal-dialog-centered modal-sm">
+<div class="modal fade" tabindex="-1" role="dialog" [ngClass]="{'show': isShow}">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
 
             <div class="modal-header">

@@ -1,18 +1,19 @@
-<button type="button" class="btn btn-outline-light" (click)="isShow = true">Login</button>
+<button type="button" class="btn btn-outline-light login" (click)="isShow = true" *ngIf="isLoggedIn()">Login</button>
+<button type="button" class="btn btn-outline-light logout" *ngIf="!isLoggedIn()">Logout</button>
 
 <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" [ngClass]="{'show': isShow}">
     <div class="modal-dialog modal-dialog-centered modal-sm">
         <div class="modal-content">
-      
-        <div class="modal-header">
-            <h4 class="modal-title">Войти</h4>
-            <button type="button" class="close" aria-label="Close" (click)="isShow = false">
+
+            <div class="modal-header">
+                <h4 class="modal-title">Войти</h4>
+                <button type="button" class="close" aria-label="Close" (click)="isShow = false">
             <span aria-hidden="true">×</span>
             </button>
             </div>
             <div class="modal-body">
                 <singup-app></singup-app>
             </div>
-          </div>
         </div>
-      </div>
+    </div>
+</div>

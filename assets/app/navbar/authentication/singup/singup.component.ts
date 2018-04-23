@@ -9,20 +9,23 @@ import { FormGroup, FormControl, Validators } from "@angular/forms";
 
 export class SingupComponent implements OnInit{
 
+    singupForm: FormGroup;
+
     passwordVisible: boolean = true;
 
-    // loginForm: FormGroup;
+    onSubmit() {
+        console.log(this.singupForm.value);
+        this.singupForm.reset();
+    }
 
-    // onSubmit() {
-    //     console.log(this.loginForm.value);
-    //     this.loginForm.reset();
-    // }
-
+    onCheckEmail() {
+        console.log("change email!");
+    }
 
     ngOnInit() {
-        // this.loginForm = new FormGroup({
-        //     email: new FormControl(null, Validators.required),
-        //     password: new FormControl(null, Validators.required)
-        // })
+        this.singupForm = new FormGroup({
+            email: new FormControl(null, Validators.required),
+            password: new FormControl(null, Validators.required)
+        })
     }
 }

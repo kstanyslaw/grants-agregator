@@ -17,3 +17,7 @@ button.passwd-hidden {
 .btn:disabled {
     cursor: not-allowed;
 }
+
+.btn.password-show{
+    border-color: #CED4DA;
+}

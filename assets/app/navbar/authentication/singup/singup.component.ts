@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 
+import { AuthenticationService } from "../authentication.service";
+
 @Component ({
     selector: 'singup-app',
     templateUrl: 'singup.component.html',
@@ -13,13 +15,15 @@ export class SingupComponent implements OnInit{
 
     passwordVisible: boolean = true;
 
+    constructor(private authenticationService: AuthenticationService) { }
+
     onSubmit() {
-        console.log(this.singupForm.value);
+        this.authenticationService.singup(this.singupForm.value.email, this.singupForm.value.password);
         this.singupForm.reset();
     }
 
     onCheckEmail() {
-        console.log("change email!");
+        this.authenticationService.checkEmail(this.singupForm.value.email);
     }
 
     ngOnInit() {

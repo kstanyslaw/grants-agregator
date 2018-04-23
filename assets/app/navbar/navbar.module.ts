@@ -2,6 +2,8 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
+import { AuthenticationService } from "./authentication/authentication.service";
+
 import { NavbarComponent } from "./navbar.component";
 import { AuthenticationComponent } from "./authentication/authentication.component";
 import { AppRoutingModule } from "../app.routing";
@@ -22,7 +24,7 @@ import { SingupComponent } from "./authentication/singup/singup.component";
         SingupComponent
       ],
       providers: [
-
+        AuthenticationService
       ],
       exports: [
         NavbarComponent,

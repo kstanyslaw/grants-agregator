@@ -23,7 +23,10 @@ export class SingupComponent implements OnInit{
             this.singupForm.value.email,
             this.singupForm.value.password
         )
-        this.authenticationService.singup(user);
+        this.authenticationService.singup(user).subscribe(
+            data => console.log(data),
+            error => console.error(error)            
+        );
         this.singupForm.reset();
     }
 

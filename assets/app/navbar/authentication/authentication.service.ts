@@ -1,16 +1,12 @@
 import { Injectable } from '@angular/core';
+import { User } from '../../user.model';
 
 @Injectable()
 export class AuthenticationService {
 
   constructor() {}
 
-  singup(email: string, password: string) {
-      var user = {
-          email: email,
-          password: password
-      }
-    console.log("User singup");
+  singup(user: User) {
     console.log(user);    
   }
 

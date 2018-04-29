@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 
 import { AuthenticationService } from "../authentication.service";
+import { User } from "../../../user.model";
 
 @Component ({
     selector: 'singup-app',
@@ -10,7 +11,7 @@ import { AuthenticationService } from "../authentication.service";
 })
 
 export class SingupComponent implements OnInit{
-
+    
     singupForm: FormGroup;
 
     passwordVisible: boolean = true;
@@ -18,7 +19,11 @@ export class SingupComponent implements OnInit{
     constructor(private authenticationService: AuthenticationService) { }
 
     onSubmit() {
-        this.authenticationService.singup(this.singupForm.value.email, this.singupForm.value.password);
+        var user = new User(
+            this.singupForm.value.email,
+            this.singupForm.value.password
+        )
+        this.authenticationService.singup(user);
         this.singupForm.reset();
     }
 

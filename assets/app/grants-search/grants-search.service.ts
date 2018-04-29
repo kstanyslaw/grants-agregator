@@ -19,7 +19,6 @@ export class GrantsSearchService {
     this.grants.push(grant);
     const body = JSON.stringify(grant);
     const headers = new Headers({'Content-Type': 'application/json'});
-    // return this.http.post('http://localhost:3000/grant', body, {headers: headers})
     return this.http.post(this.variables.api + 'grant', body, {headers: headers})
       .map((response: Response) => response.json())
       .catch((error: Response) => Observable.throw(error.json()));

@@ -8,6 +8,7 @@ var mongoose = require('mongoose');
 
 var appRoutes = require('./routes/app');
 var grantRoutes = require('./routes/grant');
+var userRoutes = require('./routes/user');
 
 var app = express();
 mongoose.connect('mongodb://siteAPI:BSYfhCrU4vHRNQTc@ds259897.mlab.com:59897/my-database');
@@ -32,6 +33,7 @@ app.use(function(req, res, next) {
     next();
 });
 
+app.use('/user', userRoutes);
 app.use('/grant', grantRoutes);
 app.use('/', appRoutes);
 

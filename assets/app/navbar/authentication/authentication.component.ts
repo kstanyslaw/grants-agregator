@@ -11,7 +11,7 @@ export class AuthenticationComponent{
     isShow = false;
 
     isLoggedIn() {
-        return true;
+        return false;
     }
 
 }

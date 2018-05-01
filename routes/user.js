@@ -40,4 +40,26 @@ router.post('/', function(req, res, next) {
     })
 })
 
+// Check Email
+router.post('/check-email', function(req, res, next) {
+    User.findOne({email: req.body.email}, function(err, email) {
+        if (err) {
+            return res.status(500).json({
+                title: "An Error Occured",
+                error: err
+            })
+        }
+        if (email) {
+            return res.status(401).json({
+                title: "Email has been occupied",
+                error: {message: "Somebody has token this email"}
+            })
+        }
+        res.status(200).json({
+            title: "Email is free",
+            message: "You can SingUp with this email"
+        })
+    })
+})
+
 module.exports = router;

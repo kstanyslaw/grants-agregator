@@ -22,8 +22,11 @@ export class AuthenticationService {
   }
 
   checkEmail(email: string) {
-    console.log("email checked!");
-    console.log(email);    
+    const body = JSON.stringify({email: email});   
+    const headers = new Headers({'Content-Type': 'application/json'});
+    return this.http.post(this.variables.api + 'user/check-email', body, {headers: headers})
+    .map((response: Response) => response.json())
+    .catch((error: Response) => Observable.throw(error.json())); 
   }
   
 

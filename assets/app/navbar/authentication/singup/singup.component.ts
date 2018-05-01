@@ -25,13 +25,16 @@ export class SingupComponent implements OnInit{
         )
         this.authenticationService.singup(user).subscribe(
             data => console.log(data),
-            error => console.error(error)            
+            error => console.error(error)
         );
         this.singupForm.reset();
     }
 
     onCheckEmail() {
-        this.authenticationService.checkEmail(this.singupForm.value.email);
+        this.authenticationService.checkEmail(this.singupForm.value.email).subscribe(
+            data => console.log(data),
+            error => console.error(error)
+        );
     }
 
     ngOnInit() {

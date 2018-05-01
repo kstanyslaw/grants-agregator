@@ -29,5 +29,20 @@ export class AuthenticationService {
     .catch((error: Response) => Observable.throw(error.json())); 
   }
   
+  login(user: User) {
+    console.log(user);
+    const body = JSON.stringify(user);
+    const headers = new Headers({'Content-Type': 'application/json'});
+    return this.http.post(this.variables.api + 'user/login', body, {headers: headers})
+      .map((response: Response) => response.json())
+      .catch((error: Response) => Observable.throw(error.json())); 
+  }
 
+  logout() {
+    localStorage.clear();
+  }
+
+  IsLoggedIn() {
+    return localStorage.getItem('token') !== null;
+  }
 }

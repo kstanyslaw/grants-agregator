@@ -7,7 +7,7 @@ import { GrantDetailsComponent } from './grant-details/grant-details.component';
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/grants-search' },
   { path: 'grants-search', component: GrantsSearchComponent },
-  { path: 'details/:url', component: GrantDetailsComponent},
+  { path: 'grant/:id', component: GrantDetailsComponent},
   { path: '**', pathMatch: 'full', redirectTo: '' }
 ];
 

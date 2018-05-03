@@ -1,24 +1,11 @@
 export class Grant {
-  name: string;
-  description: string;
-  price: number;
-  url: string;
-  categories: string[];
-  duration: Date;
-
   constructor (
-    name: string,
-    description: string,
-    price: number,
-    url: string,
-    categories: string[],
-    duration: Date,
-  ) {
-    this.name = name;
-    this.description = description;
-    this.price = price;
-    this.url = url;
-    this.categories = categories;
-    this.duration = duration;
-  }
+    public name: string,
+    public description: string,
+    public price: number,
+    public url: string,
+    public categories: string[],
+    public duration: Date,
+    public id?: string,
+  ) {  }
 }

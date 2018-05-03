@@ -9,6 +9,7 @@ import { ModalFormComponent } from './manualy-add/modal-form/modal-form.componen
 import { ModalComponent } from './manualy-add/modal/modal.component';
 import { GrantsSearchService } from './grants-search.service'
 import { ManualyAddComponent } from './manualy-add/manualy-add.component';
+import { AppRoutingModule } from '../app.routing';
 
 @NgModule({
   imports: [
@@ -16,6 +17,7 @@ import { ManualyAddComponent } from './manualy-add/manualy-add.component';
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
+    AppRoutingModule
   ],
   declarations: [
     GrantsSearchComponent,

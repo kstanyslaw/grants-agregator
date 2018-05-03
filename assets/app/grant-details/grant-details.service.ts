@@ -14,7 +14,7 @@ export class GrantDetailsService {
   constructor(private http: Http) { }
 
   getGrantDetails(id) {
-    return this.http.get(this.variables.api + 'grant/' + id)
+    return this.http.get(this.variables.api + 'grant/details/' + id)
       .map((response: Response) => {
         const grant = response.json().obj;
         var transformedGrant = new Grant(

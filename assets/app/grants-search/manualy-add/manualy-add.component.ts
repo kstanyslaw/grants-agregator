@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ManualyAddchService } from './manualy-add.service';
 
 @Component({
     selector: 'manualy-add-app',
@@ -8,7 +9,9 @@ import { Component, OnInit } from '@angular/core';
 
 export class ManualyAddComponent implements OnInit {
 
-    constructor() { }
+    constructor(private manualyAddService: ManualyAddchService) { }
 
-    ngOnInit() { }
+    ngOnInit() {
+        console.log(this.manualyAddService.modalIsShow);        
+    }
 }

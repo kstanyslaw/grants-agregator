@@ -26,9 +26,4 @@ export class TableComponent implements OnInit {
       }
     )
   }
-
-  onClick(url) {
-    console.log(url);
-    this.router.navigateByUrl('/details/' + url);
-  }
 }

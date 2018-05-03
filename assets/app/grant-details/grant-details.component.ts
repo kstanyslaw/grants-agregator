@@ -9,14 +9,14 @@ export class GrantDetailsComponent implements OnInit {
 
   constructor(private route: ActivatedRoute) {  }
 
-  grantUrl: string;
+  grantId: string;
 
   ngOnInit() {
     this.getGrantDetails();
   }
 
   getGrantDetails() {
-    const grantUrl = this.route.snapshot.paramMap.get('url');
-    this.grantUrl = grantUrl;
+    const grantId = this.route.snapshot.paramMap.get('id');
+    this.grantId = grantId;
   }
 }

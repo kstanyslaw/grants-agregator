@@ -21,7 +21,7 @@ router.get('/', function(req, res, next) {
 })
 
 // Find one Grant by id 
-router.get('/:id', function(req, res, next) {
+router.get('/details/:id', function(req, res, next) {
     Grant.findById(req.params.id, function(err, grant) {
         if (err) {
             return res.status(500).json({

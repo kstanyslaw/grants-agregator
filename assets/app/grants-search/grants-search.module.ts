@@ -3,13 +3,16 @@ import { CommonModule } from '@angular/common';
 import { HttpModule } from "@angular/http";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { AppRoutingModule } from '../app.routing';
+
 import { GrantsSearchComponent } from './grants-search.component';
 import { TableComponent } from './table/table.component';
 import { ModalFormComponent } from './manualy-add/modal-form/modal-form.component';
 import { ModalComponent } from './manualy-add/modal/modal.component';
-import { GrantsSearchService } from './grants-search.service'
 import { ManualyAddComponent } from './manualy-add/manualy-add.component';
-import { AppRoutingModule } from '../app.routing';
+
+import { ManualyAddchService } from './manualy-add/manualy-add.service';
+import { GrantsSearchService } from './grants-search.service'
 
 @NgModule({
   imports: [
@@ -27,7 +30,8 @@ import { AppRoutingModule } from '../app.routing';
     ManualyAddComponent
   ],
   providers: [
-    GrantsSearchService
+    GrantsSearchService,
+    ManualyAddchService
   ],
   exports: [
     GrantsSearchComponent,

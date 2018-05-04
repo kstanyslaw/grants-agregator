@@ -29,6 +29,8 @@ export class ModalFormComponent implements OnInit {
           data => console.log(data),
           error => console.error(error)
         );
+      console.log("Географический масштаб " + this.grantForm.value.geoScale);
+      console.log("Грантополучатель " + this.grantForm.value.grantRecipient);
     this.grantForm.reset();
   }
 
@@ -38,6 +40,8 @@ export class ModalFormComponent implements OnInit {
       name: new FormControl(null, Validators.required),
       description: new FormControl(null, Validators.required),
       price: new FormControl(null, Validators.required),
+      geoScale: new FormControl(null),
+      grantRecipient: new FormControl(null),
       url: new FormControl(null, Validators.required),
     })
   }

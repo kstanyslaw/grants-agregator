@@ -11,7 +11,5 @@ export class ManualyAddComponent implements OnInit {
 
     constructor(private manualyAddService: ManualyAddchService) { }
 
-    ngOnInit() {
-        console.log(this.manualyAddService.modalIsShow);        
-    }
+    ngOnInit() { }
 }

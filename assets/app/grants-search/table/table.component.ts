@@ -14,7 +14,6 @@ export class TableComponent implements OnInit {
 
   grants: Grant[] = [];
 
-  // constructor(private tableService: TableService) {}
   constructor(private grantsSearchService: GrantsSearchService, private router: Router) {}
 
   ngOnInit() {
@@ -22,7 +21,7 @@ export class TableComponent implements OnInit {
     .subscribe(
       (grants: Grant[]) => {
         this.grants = grants;
-        // console.log(this.grants);
+        console.log(this.grants);
       }
     )
   }

@@ -46,8 +46,8 @@ router.get('/details/:id', function(req, res, next) {
 router.post('/', function(req, res, next) {
     var grant = new Grant({
         name: req.body.name,
-        description: req.body.description,
         price: req.body.price,
+        description: req.body.description,
         url: req.body.url,
         categories: req.body.categories,
         duration: req.body.duration,

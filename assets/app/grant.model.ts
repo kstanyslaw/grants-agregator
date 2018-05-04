@@ -1,11 +1,11 @@
 export class Grant {
   constructor (
+    public id: string,
     public name: string,
-    public description: string,
     public price: number,
-    public url: string,
-    public categories: string[],
-    public duration: Date,
-    public id?: string,
+    public description?: string,
+    public url?: string,
+    public categories?: string[],
+    public duration?: Date,
   ) {  }
 }

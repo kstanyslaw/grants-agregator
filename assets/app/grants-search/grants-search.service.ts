@@ -31,13 +31,13 @@ export class GrantsSearchService {
         let transformedGrants: Grant[] = [];
         for (let grant of grants) {
           transformedGrants.push(new Grant(
+            grant._id,
             grant.name,
-            grant.description,
             grant.price,
+            grant.description,
             grant.url,
-            null,
-            null,
-            grant._id
+            grant.categories,
+            grant.duration,
           ))
         }
         this.grants = transformedGrants;

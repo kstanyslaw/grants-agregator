@@ -21,7 +21,7 @@ export class TableComponent implements OnInit {
     .subscribe(
       (grants: Grant[]) => {
         this.grants = grants;
-        console.log(this.grants);
+        // console.log(this.grants);
       }
     )
   }

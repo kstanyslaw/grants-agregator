@@ -6,6 +6,7 @@ const Grant = require('../models/grant');
 // Get Grants
 router.get('/', function(req, res, next) {
     Grant.find()
+        .select('_id name price')
         .exec(function(err, grants) {
             if (err) {
                 return res.status(500).json({

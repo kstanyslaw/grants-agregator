@@ -1,24 +1,26 @@
-<form [formGroup]="singupForm" (ngSubmit)="onSubmit()">
-    <label for="email">Электронная почта:</label>
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-            <span class="input-group-text">✉️</span>
+<div class="content">
+    <form [formGroup]="singupForm" (ngSubmit)="onSubmit()">
+        <label for="email">Электронная почта:</label>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">✉️</span>
+            </div>
+            <input type="email" class="form-control" placeholder="youremail@email.com" formControlName="email" (change)="onCheckEmail()">
+            <small id="emailHelp" class="form-text text-muted">Мы никогда не будем делиться вашей электронной почтой с кем-либо.</small>
         </div>
-        <input type="email" class="form-control" placeholder="youremail@email.com" formControlName="email" (change)="onCheckEmail()">
-        <small id="emailHelp" class="form-text text-muted">Мы никогда не будем делиться вашей электронной почтой с кем-либо.</small>
-    </div>
-
-    <label for="password">Пароль:</label>
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-            <span class="input-group-text">✉️</span>
+    
+        <label for="password">Пароль:</label>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">✉️</span>
+            </div>
+            <input [type]="passwordVisible? 'password' : 'text'" class="form-control" placeholder="password" formControlName="password">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary password-show" [ngClass]="passwordVisible? 'passwd-hidden' : 'passwd-visible'" type="button" (click)="passwordVisible = !passwordVisible"></button>
+            </div>
         </div>
-        <input [type]="passwordVisible? 'password' : 'text'" class="form-control" placeholder="password" formControlName="password">
-        <div class="input-group-append">
-            <button class="btn btn-outline-secondary password-show" [ngClass]="passwordVisible? 'passwd-hidden' : 'passwd-visible'" type="button" (click)="passwordVisible = !passwordVisible"></button>
-        </div>
-    </div>
-
-    <button type="submit" class="btn btn-primary" [disabled]="!singupForm.valid">SingUp</button>
-
-</form>
+    
+        <button type="submit" class="btn btn-primary" [disabled]="!singupForm.valid">Зарегистрироваться</button>
+    
+    </form>
+</div>

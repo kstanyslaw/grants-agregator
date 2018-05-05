@@ -14,6 +14,8 @@ export class LoginComponent implements OnInit{
 
     loginForm: FormGroup;
 
+    passwordVisible: boolean = true;
+
     constructor (private authenticationService: AuthenticationService) { }
 
     onSubmit() {

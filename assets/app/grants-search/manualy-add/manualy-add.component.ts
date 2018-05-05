@@ -12,4 +12,12 @@ export class ManualyAddComponent implements OnInit {
     constructor(private manualyAddService: ManualyAddchService) { }
 
     ngOnInit() { }
+
+    checkRole() {
+        if (localStorage.getItem('userRole') != 'administrator') {
+            return false;
+        } else {
+            return true;
+        }
+    }
 }

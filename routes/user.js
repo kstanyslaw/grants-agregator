@@ -28,7 +28,8 @@ router.post('/login', function(req, res, next) {
         res.status(200).json({
             message: "Succesfully logged in",
             token: token,
-            userId: user._id
+            userId: user._id,
+            userRole: user.role
         })
     })
 })
@@ -78,7 +79,7 @@ router.post('/check-email', function(req, res, next) {
 
 // Check role for grant-add button
 router.post('/check-role', function(req, res, next) {
-    User.findById({_id: req.body.userId}, function(err, user) {
+    User.findById(req.body.userId, function(err, user) {
         if (err) {
             return res.status(500).json({
                 title: "An Error Occured",
@@ -91,15 +92,16 @@ router.post('/check-role', function(req, res, next) {
                 error: { message: "User could not be found" }
             })
         }
-        if (user.role == 'administrator') {
-            res.status(200).json({
-                title: "Role is appropriate",
-                result: true
+        if (user.role != 'administrator') {
+            res.status(401).json({
+                title: "Role isn't appropriate",
+                error: {message: "Permission denied"},
+                result: false
             })
         }
         res.status(200).json({
-            title: "Role isn't appropriate",
-            result: false
+            title: "Role is appropriate",
+            result: true
         })
     })
 })

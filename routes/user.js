@@ -36,7 +36,8 @@ router.post('/login', function(req, res, next) {
 router.post('/', function(req, res, next) {
     var user = new User({
         email: req.body.email,
-        password: req.body.password
+        password: req.body.password,
+        role: 'tempUser'
     });
     user.save(function(err, result) {
         if (err) {
@@ -52,7 +53,7 @@ router.post('/', function(req, res, next) {
     })
 })
 
-// Check Email
+// Check Email for singup
 router.post('/check-email', function(req, res, next) {
     User.findOne({ email: req.body.email }, function(err, email) {
         if (err) {

@@ -3,24 +3,36 @@ var router = express.Router();
 
 const User = require('../models/user');
 
-// // Get Grants
-// router.get('/', function(req, res, next) {
-//   Grant.find()
-//     .exec(function(err, grants) {
-//       if (err) {
-//         return res.status(500).json({
-//           title: 'An error occured',
-//           error: err
-//         })
-//       }
-//       res.status(200).json({
-//         message: 'Success',
-//         obj: grants
-//       })
-//     })
-// })
+// Login User
+router.post('/login', function(req, res, next) {
+    User.findOne({ email: req.body.email }, function(err, user) {
+        if (err) {
+            return res.status(500).json({
+                title: "An error occured",
+                error: err
+            })
+        }
+        if (!user) {
+            return res.status(401).json({
+                title: "No user found",
+                error: { message: "User could not be found" }
+            })
+        }
+        if (req.body.password != user.password) {
+            return res.status(401).json({
+                title: "login failed",
+                error: { message: "Invalid password" }
+            })
+        }
+        var token = { user: "logged in" }; // Need encryption
+        res.status(200).json({
+            message: "Succesfully logged in",
+            token: token
+        })
+    })
+})
 
-// Save User
+// Singup User
 router.post('/', function(req, res, next) {
     var user = new User({
         email: req.body.email,
@@ -42,7 +54,7 @@ router.post('/', function(req, res, next) {
 
 // Check Email
 router.post('/check-email', function(req, res, next) {
-    User.findOne({email: req.body.email}, function(err, email) {
+    User.findOne({ email: req.body.email }, function(err, email) {
         if (err) {
             return res.status(500).json({
                 title: "An Error Occured",
@@ -52,7 +64,7 @@ router.post('/check-email', function(req, res, next) {
         if (email) {
             return res.status(401).json({
                 title: "Email has been occupied",
-                error: {message: "Somebody has token this email"}
+                error: { message: "Somebody has token this email" }
             })
         }
         res.status(200).json({

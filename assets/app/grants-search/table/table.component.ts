@@ -14,7 +14,6 @@ export class TableComponent implements OnInit {
 
   grants: Grant[] = [];
 
-  // constructor(private tableService: TableService) {}
   constructor(private grantsSearchService: GrantsSearchService, private router: Router) {}
 
   ngOnInit() {
@@ -25,10 +24,5 @@ export class TableComponent implements OnInit {
         // console.log(this.grants);
       }
     )
-  }
-
-  onClick(url) {
-    console.log(url);
-    this.router.navigateByUrl('/details/' + url);
   }
 }

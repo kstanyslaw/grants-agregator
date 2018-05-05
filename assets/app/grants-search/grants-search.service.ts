@@ -25,19 +25,19 @@ export class GrantsSearchService {
   }
 
   getGrant() {
-    // return this.http.get('http://localhost:3000/grant')
     return this.http.get(this.variables.api + 'grant')
       .map((response: Response) => {
-        const grants = response.json().obj;
+        const grants = response.json().obj;     
         let transformedGrants: Grant[] = [];
         for (let grant of grants) {
           transformedGrants.push(new Grant(
+            grant._id,
             grant.name,
-            grant.description,
             grant.price,
+            grant.description,
             grant.url,
-            null,
-            null
+            grant.categories,
+            grant.duration,
           ))
         }
         this.grants = transformedGrants;

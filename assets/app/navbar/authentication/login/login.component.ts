@@ -1,6 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 
+import { AuthenticationService } from "../authentication.service";
+import { User } from "../../../user.model";
+
 @Component ({
     selector: 'login-app',
     templateUrl: 'login.component.html',
@@ -11,8 +14,21 @@ export class LoginComponent implements OnInit{
 
     loginForm: FormGroup;
 
+    constructor (private authenticationService: AuthenticationService) { }
+
     onSubmit() {
-        console.log(this.loginForm.value);
+        var user = new User(
+            this.loginForm.value.email,
+            this.loginForm.value.password
+        )
+        this.authenticationService.login(user)
+            .subscribe(
+                data => {
+                    localStorage.setItem('token', data.token);
+                    console.log(data)
+                },
+                error => console.error(error)
+            );
         this.loginForm.reset();
     }
 

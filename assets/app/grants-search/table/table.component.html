@@ -1,20 +1,20 @@
 <div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-md-12">
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">Название</th>
-            <th scope="col">Размер</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let grant of grants" (click)="onClick(grant.name)">
-            <td>{{ grant.name }}</td>
-            <td>{{ grant.price }}</td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="row">
+        <div class="col-xs-12 col-md-12">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Название</th>
+                        <th scope="col">Размер</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let grant of grants" [routerLink]="['/grant/' + grant.id]">
+                        <td>{{ grant.name }}</td>
+                        <td>{{ grant.price }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
-  </div>
 </div>

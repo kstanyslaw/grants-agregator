@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+import { ManualyAddchService } from './manualy-add.service';
 
 @Component({
     selector: 'manualy-add-app',
     templateUrl: 'manualy-add.component.html',
-    // styleUrls: ['']
+    styleUrls: ['manualy-add.component.css']
 })
 
 export class ManualyAddComponent implements OnInit {
 
-    constructor() { }
+    constructor(private manualyAddService: ManualyAddchService) { }
 
     ngOnInit() { }
 }

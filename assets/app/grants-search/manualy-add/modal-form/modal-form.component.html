@@ -1,63 +1,63 @@
 <div class="container">
-  <form [formGroup]="grantForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="grantForm" (ngSubmit)="onSubmit()">
 
-    <label for="name">Название гранта</label>
-    <div class="input-group mb-3">
-      <input type="text" class="form-control" placeholder="Название гранта" formControlName="name">
-    </div>
+        <label for="name">Название гранта</label>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Название гранта" formControlName="name">
+        </div>
 
-    <label for="description">Описание гранта</label>
-    <div class="input-group mb-3">
-      <textarea class="form-control" formControlName="description"></textarea>
-    </div>
+        <label for="description">Описание гранта</label>
+        <div class="input-group mb-3">
+            <textarea class="form-control" formControlName="description"></textarea>
+        </div>
 
-    <label for="price">Размер гранта</label>
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text">₽</span>
-      </div>
-      <input type="text" class="form-control" formControlName="price">
-      <div class="input-group-append">
-        <span class="input-group-text">.00</span>
-      </div>
-    </div>
+        <label for="price">Размер гранта</label>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">₽</span>
+            </div>
+            <input type="text" class="form-control" formControlName="price">
+            <div class="input-group-append">
+                <span class="input-group-text">.00</span>
+            </div>
+        </div>
 
-    <label for="geographic-scale">Географический масштаб</label>
-    <div class="input-group mb-3">
-      <div class="form-check col-sm-12">
-        <input class="form-check-input" type="radio" name="gScaleRadios" value="1" checked> Локальный
-      </div>
-      <div class="form-check col-sm-12">
-        <input class="form-check-input" type="radio" name="gScaleRadios" value="2"> Региональный
-      </div>
-      <div class="form-check col-sm-12">
-        <input class="form-check-input" type="radio" name="gScaleRadios" value="3"> Федеральный
-      </div>
-    </div>
+        <label for="geographic-scale">Географический масштаб</label>
+        <div class="input-group mb-3">
+            <div class="form-check col-sm-12">
+                <input class="form-check-input" type="radio" value="local" formControlName="geoScale" checked> Локальный
+            </div>
+            <div class="form-check col-sm-12">
+                <input class="form-check-input" type="radio" value="region" formControlName="geoScale"> Региональный
+            </div>
+            <div class="form-check col-sm-12">
+                <input class="form-check-input" type="radio" value="federal" formControlName="geoScale"> Федеральный
+            </div>
+        </div>
 
-    <label for="grantee">Грантополучатель</label>
-    <div class="input-group mb-3">
-      <div class="form-check col-sm-12">
-        <input class="form-check-input" type="radio" name="GranteeRadios" value="1" checked> Физическое лицо
-      </div>
-      <div class="form-check col-sm-12">
-        <input class="form-check-input" type="radio" name="GranteeRadios" value="2"> НКО
-      </div>
-      <div class="form-check col-sm-12">
-        <input class="form-check-input" type="radio" name="GranteeRadios" value="3"> ИП, ООО
-      </div>
-    </div>
+        <label for="grantee">Грантополучатель</label>
+        <div class="input-group mb-3">
+            <div class="form-check col-sm-12">
+                <input class="form-check-input" type="radio" formControlName="grantRecipient" value="1" checked> Физическое лицо
+            </div>
+            <div class="form-check col-sm-12">
+                <input class="form-check-input" type="radio" formControlName="grantRecipient" value="2"> НКО
+            </div>
+            <div class="form-check col-sm-12">
+                <input class="form-check-input" type="radio" formControlName="grantRecipient" value="3"> ИП, ООО
+            </div>
+        </div>
 
-    <label for="url">Ссылка на грант</label>
-    <div class="input-group mb-3">
-      <div class="input-group-prepend">
-        <span class="input-group-text">url:</span>
-      </div>
-      <input type="text" class="form-control" formControlName="url">
-    </div>
+        <label for="url">Ссылка на грант</label>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">url:</span>
+            </div>
+            <input type="text" class="form-control" formControlName="url">
+        </div>
 
-    <hr class="mb-4">
-    <button class="btn btn-primary btn-lg btn-block" type="submit">Нажмите, чтобы добавить</button>
+        <hr class="mb-4">
+        <button class="btn btn-primary btn-lg btn-block" type="submit">Нажмите, чтобы добавить</button>
 
-  </form>
+    </form>
 </div>

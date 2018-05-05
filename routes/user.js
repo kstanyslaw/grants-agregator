@@ -27,7 +27,8 @@ router.post('/login', function(req, res, next) {
         var token = { user: "logged in" }; // Need encryption
         res.status(200).json({
             message: "Succesfully logged in",
-            token: token
+            token: token,
+            userId: user._id
         })
     })
 })
@@ -71,6 +72,34 @@ router.post('/check-email', function(req, res, next) {
         res.status(200).json({
             title: "Email is free",
             message: "You can SingUp with this email"
+        })
+    })
+})
+
+// Check role for grant-add button
+router.post('/check-role', function(req, res, next) {
+    User.findById({_id: req.body.userId}, function(err, user) {
+        if (err) {
+            return res.status(500).json({
+                title: "An Error Occured",
+                error: err
+            })
+        }
+        if (!user) {
+            return res.status(401).json({
+                title: "No user found",
+                error: { message: "User could not be found" }
+            })
+        }
+        if (user.role == 'administrator') {
+            res.status(200).json({
+                title: "Role is appropriate",
+                result: true
+            })
+        }
+        res.status(200).json({
+            title: "Role isn't appropriate",
+            result: false
         })
     })
 })

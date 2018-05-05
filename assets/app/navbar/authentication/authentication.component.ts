@@ -13,6 +13,8 @@ export class AuthenticationComponent{
 
     dropdownShow = false;
 
+    activeTab = 'login';
+
     constructor(private authenticationService: AuthenticationService) {}
 
     isLoggedIn() {

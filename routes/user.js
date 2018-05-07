@@ -1,5 +1,6 @@
 const express = require('express');
 var router = express.Router();
+var sendEmail = require('./email/email-send');
 
 const User = require('../models/user');
 
@@ -48,6 +49,15 @@ router.post('/', function(req, res, next) {
                 error: err
             })
         }
+        res.render('confirm-email', {link: 'http://localhost:3000'}, (err, html) => {
+            if (err) {
+                return res.status(500).json({
+                    title: "Email did not send",
+                    error: err
+                })
+            }
+            sendEmail(req.body.email, "Подтверждение адреса электронной почты", html)
+        })
         res.status(201).json({
             message: 'User singup',
             obj: result

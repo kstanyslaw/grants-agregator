@@ -1,6 +1,5 @@
 const express = require('express');
 var router = express.Router();
-var nodemailer = require('nodemailer');
 
 const User = require('../models/user');
 
@@ -49,39 +48,12 @@ router.post('/', function(req, res, next) {
                 error: err
             })
         }
-        sendVerificationEmail(user.email, "Verify! from grants agregator!");
         res.status(201).json({
             message: 'User singup',
             obj: result
         })
     })
 })
-
-// Verification email sender
-function sendVerificationEmail(email, text) {
-    var transporter = nodemailer.createTransport({
-        service: 'Yandex',
-        auth: {
-            user: 'grants-agregator@yandex.ru',
-            pass: 'TaiHygchongIvi7'
-        }
-    });
-    
-    var mailOptions = {
-        from: 'grants-agregator@yandex.ru',
-        to: email,
-        subject: 'Sending Email using Node.js',
-        text: text
-    };
-    
-    transporter.sendMail(mailOptions, function(error, info){
-        if (error) {
-          console.log(error);
-        } else {
-          console.log('Email sent: ' + info.response);
-        }
-      });
-}
 
 // Check Email for singup
 router.post('/check-email', function(req, res, next) {

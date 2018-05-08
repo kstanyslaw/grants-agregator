@@ -49,7 +49,7 @@ router.post('/', function(req, res, next) {
                 error: err
             })
         }
-        res.render('confirm-email', {link: 'http://localhost:3000'}, (err, html) => {
+        res.render('confirm-email', {link: 'http://localhost:3000/confirm-email/' + result._id}, (err, html) => {
             if (err) {
                 return res.status(500).json({
                     title: "Email did not send",
@@ -59,8 +59,7 @@ router.post('/', function(req, res, next) {
             sendEmail(req.body.email, "Подтверждение адреса электронной почты", html)
         })
         res.status(201).json({
-            message: 'User singup',
-            obj: result
+            message: 'User singup'
         })
     })
 })

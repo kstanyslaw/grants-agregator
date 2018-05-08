@@ -9,6 +9,7 @@ import { AuthenticationComponent } from "./authentication/authentication.compone
 import { AppRoutingModule } from "../app.routing";
 import { LoginComponent } from "./authentication/login/login.component";
 import { SingupComponent } from "./authentication/singup/singup.component";
+import { ConfirnComponent } from "./authentication/confirm/confirm.component";
 
 @NgModule({
     imports: [
@@ -21,7 +22,8 @@ import { SingupComponent } from "./authentication/singup/singup.component";
         NavbarComponent,
         AuthenticationComponent,
         LoginComponent,
-        SingupComponent
+        SingupComponent,
+        ConfirnComponent
       ],
       providers: [
         AuthenticationService
@@ -30,7 +32,8 @@ import { SingupComponent } from "./authentication/singup/singup.component";
         NavbarComponent,
         AuthenticationComponent,
         LoginComponent,
-        SingupComponent
+        SingupComponent,
+        ConfirnComponent
       ]
 })
 export class NavbarModule { }

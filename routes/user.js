@@ -49,7 +49,7 @@ router.post('/', function(req, res, next) {
                 error: err
             })
         }
-        res.render('confirm-email', {link: 'http://localhost:3000'}, (err, html) => {
+        res.render('confirm-email', {link: 'http://localhost:3000/confirm-email/' + result._id}, (err, html) => {
             if (err) {
                 return res.status(500).json({
                     title: "Email did not send",
@@ -59,8 +59,44 @@ router.post('/', function(req, res, next) {
             sendEmail(req.body.email, "Подтверждение адреса электронной почты", html)
         })
         res.status(201).json({
-            message: 'User singup',
-            obj: result
+            message: 'User singup'
+        })
+    })
+})
+
+// Confirm Email
+router.patch('/confirm-email', function(req, res, next) {
+    User.findById(req.body.userId, function(err, user) {
+        if(err) {
+            return res.status(500).json({
+                title: "An Error Occured",
+                error: err
+            })
+        }
+        if (!user) {
+            return res.status(401).json({
+                title: "No user found",
+                error: { message: "User could not be found" }
+            })
+        }
+        if (user.role != 'tempUser') {
+            return res.status(401).json({
+                title: "User has already verified mail",
+                error: {message: "User has already verified mail"},
+            })
+        }
+        user.role = 'user'
+        user.save(function(err, result) {
+            if (err) {
+                return res.status(500).json({
+                  title: "User's role hasn't update",
+                  error: err
+                })
+              }
+              res.status(200).json({
+                  title: 'Success',
+                  message: 'Email confirmed, role update'
+              })
         })
     })
 })
@@ -103,7 +139,7 @@ router.post('/check-role', function(req, res, next) {
             })
         }
         if (user.role != 'administrator') {
-            res.status(401).json({
+            return res.status(401).json({
                 title: "Role isn't appropriate",
                 error: {message: "Permission denied"},
                 result: false

@@ -21,7 +21,15 @@ export class AuthenticationService {
       .catch((error: Response) => Observable.throw(error.json())); 
   }
 
-  checkEmail(email: string) {
+  confirmEmail(userId: String) {
+    const body = JSON.stringify({userId: userId});
+    const headers = new Headers({'Content-Type': 'application/json'});
+    return this.http.patch(this.variables.api + 'user/confirm-email/', body, {headers: headers})
+      .map((response: Response) => response.json())
+      .catch((error: Response) => Observable.throw(error.json()));
+  }
+
+  checkEmail(email: String) {
     const body = JSON.stringify({email: email});   
     const headers = new Headers({'Content-Type': 'application/json'});
     return this.http.post(this.variables.api + 'user/check-email', body, {headers: headers})

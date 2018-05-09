@@ -114,14 +114,16 @@ router.post('/check-email', function(req, res, next) {
             })
         }
         if (email) {
-            return res.status(401).json({
+            return res.status(200).json({
                 title: "Email has been occupied",
-                error: { message: "Somebody has token this email" }
+                message: { message: "Somebody has token this email" },
+                result: true
             })
         }
         res.status(200).json({
             title: "Email is free",
-            message: "You can SingUp with this email"
+            message: "You can SingUp with this email",
+            result: false
         })
     })
 })

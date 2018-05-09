@@ -29,12 +29,17 @@ export class AuthenticationService {
       .catch((error: Response) => Observable.throw(error.json()));
   }
 
-  checkEmail(email: String) {
+  checkEmailFree(email: String) {
     const body = JSON.stringify({email: email});   
     const headers = new Headers({'Content-Type': 'application/json'});
     return this.http.post(this.variables.api + 'user/check-email', body, {headers: headers})
     .map((response: Response) => response.json())
     .catch((error: Response) => Observable.throw(error.json())); 
+  }
+
+  checkEmailValid(email: string) { // !!!IMPORTANT!!! 'string' in lowercase!
+    var regularExpression = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return regularExpression.test(email);
   }
   
   login(user: User) {

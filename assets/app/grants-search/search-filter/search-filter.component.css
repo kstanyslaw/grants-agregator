@@ -1,0 +1,8 @@
+form {
+    border-style: solid;
+    border-width: 1px;
+    border-color: #ced4da;
+    border-radius: .25rem;
+    padding: 1em;
+    margin-bottom: 1em;
+}

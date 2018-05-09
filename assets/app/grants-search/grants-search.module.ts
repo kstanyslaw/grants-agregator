@@ -10,6 +10,7 @@ import { TableComponent } from './table/table.component';
 import { ModalFormComponent } from './manualy-add/modal-form/modal-form.component';
 import { ModalComponent } from './manualy-add/modal/modal.component';
 import { ManualyAddComponent } from './manualy-add/manualy-add.component';
+import { SearchFilterComponent } from './search-filter/search-filter.component';
 
 import { ManualyAddchService } from './manualy-add/manualy-add.service';
 import { GrantsSearchService } from './grants-search.service'
@@ -27,7 +28,8 @@ import { GrantsSearchService } from './grants-search.service'
     TableComponent,
     ModalFormComponent,
     ModalComponent,
-    ManualyAddComponent
+    ManualyAddComponent,
+    SearchFilterComponent
   ],
   providers: [
     GrantsSearchService,
@@ -38,7 +40,8 @@ import { GrantsSearchService } from './grants-search.service'
     TableComponent,
     ModalFormComponent,
     ModalComponent,
-    ManualyAddComponent
+    ManualyAddComponent,
+    SearchFilterComponent
   ]
 })
 export class GrantsSearchModule { }

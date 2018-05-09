@@ -1,0 +1,23 @@
+<div class="container">
+    <form>
+        <div class="form-row">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Поиск">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button">S</button>
+                </div>
+            </div>
+
+            <button class="btn btn-secondary btn-sm btn-block" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" (click)="isShow = !isShow">
+                Расширеный поиск
+            </button>
+
+            <div class="collapse" [ngClass]="{'show': isShow}">
+                <div class="card card-body">
+                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica,
+                    craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

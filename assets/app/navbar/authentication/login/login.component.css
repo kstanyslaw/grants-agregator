@@ -25,3 +25,15 @@ button.passwd-hidden {
 .btn.password-show{
     border-color: #CED4DA;
 }
+
+.alert{
+    margin-bottom: 0;
+}
+
+.danger {
+    border-color: #f9a4ad;
+}
+
+.warning {
+    border-color: #ffeaab;
+}

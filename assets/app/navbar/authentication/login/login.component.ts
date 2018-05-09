@@ -16,6 +16,14 @@ export class LoginComponent implements OnInit{
 
     passwordVisible: boolean = true;
 
+    messages = {
+        default: {message: '', alertClass: 'form-text text-muted', formClass: '', valid: false},
+        emailIsTaken: {message: 'Нет зарегистрированных пользователей с такой электронной почтой.', alertClass: 'alert alert-danger', formClass: 'danger', valid: false},
+        invalidEmail: {message: 'Проверьте, правильно ли введен адрес электронной почты.', alertClass: 'alert alert-warning', formClass: 'warning', valid: false},
+    }
+
+    emailCheck = this.messages.default;
+
     constructor (private authenticationService: AuthenticationService) { }
 
     onSubmit() {
@@ -34,6 +42,26 @@ export class LoginComponent implements OnInit{
                 error => console.error(error)
             );
         this.loginForm.reset();
+    }
+
+    onCheckEmail() {
+        //Is email occupied
+        this.authenticationService.checkEmailFree(this.loginForm.value.email).subscribe(
+            data => {
+                switch (true) {
+                    case !this.authenticationService.checkEmailValid(this.loginForm.value.email):
+                        this.emailCheck = this.messages.invalidEmail;
+                        break;
+                    case !data.result:
+                        this.emailCheck = this.messages.emailIsTaken;
+                        break;
+                    default:
+                        this.emailCheck = this.messages.default;
+                        this.emailCheck.valid = true;
+                }
+            },
+            error => console.error(error)
+        );
     }
 
     ngOnInit() {

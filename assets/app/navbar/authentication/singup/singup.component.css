@@ -2,6 +2,10 @@ div.content {
     padding: 1em;
 }
 
+.btn:disabled {
+    cursor: not-allowed;
+}
+
 button.passwd-visible {
     width: 2.5em;
     background-image: url('https://cdn0.iconfinder.com/data/icons/user-interface-6/100/ui-05-512.png');
@@ -16,10 +20,6 @@ button.passwd-hidden {
     background-size: 1.5em;
     background-position: center;
     background-repeat: no-repeat;
-}
-
-.btn:disabled {
-    cursor: not-allowed;
 }
 
 .btn.password-show{

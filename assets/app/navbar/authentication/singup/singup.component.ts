@@ -16,6 +16,14 @@ export class SingupComponent implements OnInit{
 
     passwordVisible: boolean = true;
 
+    messages = {
+        default: {message: 'Мы никому не сообщим вашу электронную почту.', alertClass: 'form-text text-muted', formClass: '', valid: false},
+        emailIsTaken: {message: 'Пользователь с такой электронной почтой уже существует.', alertClass: 'alert alert-danger', formClass: 'danger', valid: false},
+        invalidEmail: {message: 'Проверьте, правильно ли введен адрес электронной почты.', alertClass: 'alert alert-warning', formClass: 'warning', valid: false},
+    }
+
+    emailCheck = this.messages.default;
+
     constructor(private authenticationService: AuthenticationService) { }
 
     onSubmit() {
@@ -31,8 +39,21 @@ export class SingupComponent implements OnInit{
     }
 
     onCheckEmail() {
-        this.authenticationService.checkEmail(this.singupForm.value.email).subscribe(
-            data => console.log(data),
+        //Is email occupied
+        this.authenticationService.checkEmailFree(this.singupForm.value.email).subscribe(
+            data => {
+                switch (true) {
+                    case !this.authenticationService.checkEmailValid(this.singupForm.value.email):
+                        this.emailCheck = this.messages.invalidEmail;
+                        break;
+                    case data.result:
+                        this.emailCheck = this.messages.emailIsTaken;
+                        break;
+                    default:
+                        this.emailCheck = this.messages.default;
+                        this.emailCheck.valid = true;
+                }
+            },
             error => console.error(error)
         );
     }

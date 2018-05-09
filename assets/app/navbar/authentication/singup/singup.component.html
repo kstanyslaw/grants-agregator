@@ -1,14 +1,18 @@
 <div class="content">
     <form [formGroup]="singupForm" (ngSubmit)="onSubmit()">
+        <!-- Email -->
         <label for="email">Электронная почта:</label>
         <div class="input-group mb-3">
             <div class="input-group-prepend">
                 <span class="input-group-text">✉️</span>
             </div>
-            <input type="email" class="form-control" placeholder="youremail@email.com" formControlName="email" (change)="onCheckEmail()">
-            <small id="emailHelp" class="form-text text-muted">Мы никогда не будем делиться вашей электронной почтой с кем-либо.</small>
+            <input type="email" class="form-control" [ngClass]="emailCheck.formClass" placeholder="youremail@email.com" formControlName="email" (keyup)="onCheckEmail()">
+            <small class="form-text col-12" [ngClass]="emailCheck.alertClass">
+                {{ emailCheck.message }}
+            </small>
         </div>
     
+        <!-- Password -->
         <label for="password">Пароль:</label>
         <div class="input-group mb-3">
             <div class="input-group-prepend">
@@ -20,7 +24,7 @@
             </div>
         </div>
     
-        <button type="submit" class="btn btn-primary" [disabled]="!singupForm.valid">Зарегистрироваться</button>
+        <button type="submit" class="btn btn-primary" [disabled]="(!singupForm.valid || !emailCheck.valid)">Зарегистрироваться</button>
     
     </form>
 </div>

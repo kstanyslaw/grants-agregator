@@ -4,6 +4,7 @@ var jwt = require('jsonwebtoken');
 var router = express.Router();
 
 var sendEmail = require('./email/email-send');
+var isEmailValid = require('./email/email-valid');
 
 const User = require('../models/user');
 
@@ -28,7 +29,7 @@ router.post('/login', function(req, res, next) {
                 error: { message: "Invalid password" }
             })
         }
-        var token = jwt.sign({user: user}, 'GQ9UPbT3m3VNfgYd', {expiresIn: 7200});
+        var token = jwt.sign({ user: user }, 'GQ9UPbT3m3VNfgYd', { expiresIn: 7200 });
         res.status(200).json({
             message: "Succesfully logged in",
             token: token,
@@ -45,24 +46,44 @@ router.post('/', function(req, res, next) {
         password: bcrypt.hashSync(req.body.password, 10),
         role: 'tempUser'
     });
-    user.save(function(err, result) {
+    User.findOne({ email: req.body.email }, function(err, user) {
         if (err) {
             return res.status(500).json({
-                title: "User didn't singup!",
+                title: "An error occured",
                 error: err
             })
         }
-        res.render('confirm-email', {link: 'http://localhost:3000/confirm-email/' + result._id}, (err, html) => {
+        if (user) {
+            return res.status(401).json({
+                title: "Email has token",
+                error: { message: "User with this email has allready exist" }
+            })
+        }
+        if (!isEmailValid(req.body.email)) {
+            return res.status(401).json({
+                title: "Invalid email",
+                error: { message: "Given user's email is invalid" }
+            })
+        }
+        user.save(function(err, result) {
             if (err) {
                 return res.status(500).json({
-                    title: "Email did not send",
+                    title: "User didn't singup!",
                     error: err
                 })
             }
-            sendEmail(req.body.email, "Подтверждение адреса электронной почты", html)
-        })
-        res.status(201).json({
-            message: 'User singup'
+            res.render('confirm-email', { link: 'http://localhost:3000/confirm-email/' + result._id }, (err, html) => {
+                if (err) {
+                    return res.status(500).json({
+                        title: "Email did not send",
+                        error: err
+                    })
+                }
+                sendEmail(req.body.email, "Подтверждение адреса электронной почты", html)
+            })
+            res.status(201).json({
+                message: 'User singup'
+            })
         })
     })
 })
@@ -70,7 +91,7 @@ router.post('/', function(req, res, next) {
 // Confirm Email
 router.patch('/confirm-email', function(req, res, next) {
     User.findById(req.body.userId, function(err, user) {
-        if(err) {
+        if (err) {
             return res.status(500).json({
                 title: "An Error Occured",
                 error: err
@@ -85,26 +106,26 @@ router.patch('/confirm-email', function(req, res, next) {
         if (user.role != 'tempUser') {
             return res.status(401).json({
                 title: "User has already verified mail",
-                error: {message: "User has already verified mail"},
+                error: { message: "User has already verified mail" },
             })
         }
         user.role = 'user'
         user.save(function(err, result) {
             if (err) {
                 return res.status(500).json({
-                  title: "User's role hasn't update",
-                  error: err
+                    title: "User's role hasn't update",
+                    error: err
                 })
-              }
-              res.status(200).json({
-                  title: 'Success',
-                  message: 'Email confirmed, role update'
-              })
+            }
+            res.status(200).json({
+                title: 'Success',
+                message: 'Email confirmed, role update'
+            })
         })
     })
 })
 
-// Check Email for singup
+// Check Email for singup and login
 router.post('/check-email', function(req, res, next) {
     User.findOne({ email: req.body.email }, function(err, email) {
         if (err) {

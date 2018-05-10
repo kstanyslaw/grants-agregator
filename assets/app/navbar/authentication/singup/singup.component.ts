@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
 
 import { AuthenticationService } from "../authentication.service";
 import { User } from "../../../user.model";
@@ -24,14 +25,15 @@ export class SingupComponent implements OnInit{
 
     emailCheck = this.messages.default;
 
-    constructor(private authenticationService: AuthenticationService) { }
+    constructor(private authenticationService: AuthenticationService, private router: Router) { }
 
     onSubmit() {
         var user = new User(
             this.singupForm.value.email,
             this.singupForm.value.password
         )
-        this.authenticationService.singup(user).subscribe(
+        var path = this.router.url;
+        this.authenticationService.singup(user, path).subscribe(
             data => console.log(data),
             error => console.error(error)
         );

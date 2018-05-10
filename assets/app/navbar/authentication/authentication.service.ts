@@ -13,8 +13,10 @@ export class AuthenticationService {
 
   constructor(private http: Http) { }
 
-  singup(user: User) {
-    const body = JSON.stringify(user);
+  singup(user: User, path: String) {
+    var req: Object = user;
+    req['path'] = path;
+    const body = JSON.stringify(req);
     const headers = new Headers({'Content-Type': 'application/json'});
     return this.http.post(this.variables.api + 'user', body, {headers: headers})
       .map((response: Response) => response.json())

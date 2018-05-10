@@ -9,7 +9,7 @@ import { AuthenticationService } from "../authentication.service";
     // styleUrls: ['confirm.component.css']
 })
 
-export class ConfirnComponent implements OnInit{
+export class ConfirmComponent implements OnInit{
 
     constructor (private route: ActivatedRoute, private authenticationService: AuthenticationService) { }
 

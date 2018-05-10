@@ -5,6 +5,7 @@ import { AppComponent } from "./app.component";
 import { NavbarModule } from './navbar/navbar.module';
 import { GrantsSearchModule } from './grants-search/grants-search.module';
 import { GrantDetailsModule } from './grant-details/grant-details.module';
+import { PricingModule } from './pricing/pricing.module';
 
 import { AppRoutingModule } from './app.routing';
 
@@ -17,7 +18,8 @@ import { AppRoutingModule } from './app.routing';
         NavbarModule,
         GrantsSearchModule,
         AppRoutingModule,
-        GrantDetailsModule
+        GrantDetailsModule,
+        PricingModule
     ],
     providers: [],
     bootstrap: [AppComponent]

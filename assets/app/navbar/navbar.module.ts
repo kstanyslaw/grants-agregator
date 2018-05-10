@@ -9,7 +9,7 @@ import { AuthenticationComponent } from "./authentication/authentication.compone
 import { AppRoutingModule } from "../app.routing";
 import { LoginComponent } from "./authentication/login/login.component";
 import { SingupComponent } from "./authentication/singup/singup.component";
-import { ConfirnComponent } from "./authentication/confirm/confirm.component";
+import { ConfirmComponent } from "./authentication/confirm/confirm.component";
 
 @NgModule({
     imports: [
@@ -23,7 +23,7 @@ import { ConfirnComponent } from "./authentication/confirm/confirm.component";
         AuthenticationComponent,
         LoginComponent,
         SingupComponent,
-        ConfirnComponent
+        ConfirmComponent
       ],
       providers: [
         AuthenticationService
@@ -33,7 +33,7 @@ import { ConfirnComponent } from "./authentication/confirm/confirm.component";
         AuthenticationComponent,
         LoginComponent,
         SingupComponent,
-        ConfirnComponent
+        ConfirmComponent
       ]
 })
 export class NavbarModule { }

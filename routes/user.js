@@ -46,6 +46,10 @@ router.post('/', function(req, res, next) {
         password: bcrypt.hashSync(req.body.password, 10),
         role: 'tempUser'
     });
+<<<<<<< HEAD
+    User.findOne({ email: req.body.email }, function(err, user) {
+=======
+    console.log("PATH: " + req.body.path);    
     User.findOne({ email: req.body.email }, function(err, user) {
         if (err) {
             return res.status(500).json({
@@ -65,7 +69,32 @@ router.post('/', function(req, res, next) {
                 error: { message: "Given user's email is invalid" }
             })
         }
+    })
+    user.save(function(err, result) {
+>>>>>>> master
+        if (err) {
+            return res.status(500).json({
+                title: "An error occured",
+                error: err
+            })
+        }
+<<<<<<< HEAD
+        if (user) {
+            return res.status(401).json({
+                title: "Email has token",
+                error: { message: "User with this email has allready exist" }
+            })
+        }
+        if (!isEmailValid(req.body.email)) {
+            return res.status(401).json({
+                title: "Invalid email",
+                error: { message: "Given user's email is invalid" }
+            })
+        }
         user.save(function(err, result) {
+=======
+        res.render('confirm-email', { link: 'http://localhost:3000/confirm-email/' + result._id }, (err, html) => {
+>>>>>>> master
             if (err) {
                 return res.status(500).json({
                     title: "User didn't singup!",

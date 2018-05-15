@@ -4,11 +4,15 @@ var Schema = mongoose.Schema;
 
 var schema = new Schema({
     name: { type: String, required: true },
-    description: { type: String, required: true },
-    price: { type: Number, required: true },
+    grantor: { type: String, required: true },
     url: { type: String, required: true },
+    dateStart: { type: Date, required: true },
+    deadline: { type: Date, required: true },
+    price: { type: Number, required: true },
+    geoScale: { type: String, required: true },
+    grantee: [{ type: String, required: true }],
+    description: { type: String },
     categories: [{ type: String }],
-    duration: { type: Date }
 });
 
 schema.plugin(mongooseUniqueValidator);

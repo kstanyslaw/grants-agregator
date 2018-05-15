@@ -46,9 +46,6 @@ router.post('/', function(req, res, next) {
         password: bcrypt.hashSync(req.body.password, 10),
         role: 'tempUser'
     });
-<<<<<<< HEAD
-    User.findOne({ email: req.body.email }, function(err, user) {
-=======
     console.log("PATH: " + req.body.path);    
     User.findOne({ email: req.body.email }, function(err, user) {
         if (err) {
@@ -71,14 +68,12 @@ router.post('/', function(req, res, next) {
         }
     })
     user.save(function(err, result) {
->>>>>>> master
         if (err) {
             return res.status(500).json({
                 title: "An error occured",
                 error: err
             })
         }
-<<<<<<< HEAD
         if (user) {
             return res.status(401).json({
                 title: "Email has token",
@@ -91,31 +86,21 @@ router.post('/', function(req, res, next) {
                 error: { message: "Given user's email is invalid" }
             })
         }
-        user.save(function(err, result) {
-=======
         res.render('confirm-email', { link: 'http://localhost:3000/confirm-email/' + result._id }, (err, html) => {
->>>>>>> master
             if (err) {
                 return res.status(500).json({
-                    title: "User didn't singup!",
+                    title: "Email did not send",
                     error: err
                 })
             }
-            res.render('confirm-email', { link: 'http://localhost:3000/confirm-email/' + result._id }, (err, html) => {
-                if (err) {
-                    return res.status(500).json({
-                        title: "Email did not send",
-                        error: err
-                    })
-                }
-                sendEmail(req.body.email, "Подтверждение адреса электронной почты", html)
-            })
-            res.status(201).json({
-                message: 'User singup'
-            })
+            sendEmail(req.body.email, "Подтверждение адреса электронной почты", html)
+        })
+        res.status(201).json({
+            message: 'User singup'
         })
     })
 })
+
 
 // Confirm Email
 router.patch('/confirm-email', function(req, res, next) {

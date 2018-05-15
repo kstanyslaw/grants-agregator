@@ -47,11 +47,15 @@ router.get('/details/:id', function(req, res, next) {
 router.post('/', function(req, res, next) {
     var grant = new Grant({
         name: req.body.name,
-        price: req.body.price,
-        description: req.body.description,
+        grantor: req.body.grantor,
         url: req.body.url,
+        dateStart: req.body.dateStart,
+        deadline: req.body.deadline,
+        price: req.body.price,
+        geoScale: req.body.geoScale,
+        grantee: req.body.grantee,
+        description: req.body.description,
         categories: req.body.categories,
-        duration: req.body.duration,
     });
     grant.save(function(err, result) {
         if (err) {

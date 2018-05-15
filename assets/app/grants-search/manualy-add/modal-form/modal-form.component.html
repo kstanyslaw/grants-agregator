@@ -1,14 +1,40 @@
 <div class="container">
     <form [formGroup]="grantForm" (ngSubmit)="onSubmit()">
-
-        <label for="name">Название гранта</label>
+        
+        <label for="name">Название грантовой программы</label>
         <div class="input-group mb-3">
             <input type="text" class="form-control" placeholder="Название гранта" formControlName="name">
+        </div>
+        
+        <label for="grantor">Полное наименование оператора гранта/грантодателя</label>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Название гранта" formControlName="grantor">
+        </div>
+        
+        <label for="url">Ссылка на сайт гранта</label>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">url:</span>
+            </div>
+            <input type="text" class="form-control" formControlName="url">
+            <small class="form-text text-muted">
+                Укажите ссылку именно на сайт, который является официальным. Указание на косвенный источник информации не подходит.
+            </small>
         </div>
 
         <label for="description">Описание гранта</label>
         <div class="input-group mb-3">
             <textarea class="form-control" formControlName="description"></textarea>
+        </div>
+
+        <label for="name">Дата объявления конкурса</label>
+        <div class="input-group mb-3">
+            <input type="date" class="form-control" placeholder="Название гранта" formControlName="dateStart">
+        </div>
+
+        <label for="name">Дата окончания подачи заявки на конкурс (дедлайн)</label>
+        <div class="input-group mb-3">
+            <input type="date" class="form-control" placeholder="Название гранта" formControlName="deadline">
         </div>
 
         <label for="price">Размер гранта</label>
@@ -22,39 +48,41 @@
             </div>
         </div>
 
-        <label for="geographic-scale">Географический масштаб</label>
+        <label for="geographic-scale">Географический охват гранта</label>
         <div class="input-group mb-3">
             <div class="form-check col-sm-12">
-                <input class="form-check-input" type="radio" value="local" formControlName="geoScale" checked> Локальный
+                <input class="form-check-input" type="radio" value="local" formControlName="geoScale"> Локальный (городской, муниципальный)
             </div>
             <div class="form-check col-sm-12">
-                <input class="form-check-input" type="radio" value="region" formControlName="geoScale"> Региональный
+                <input class="form-check-input" type="radio" value="region" formControlName="geoScale"> Региональный (областной, краевой)
+            </div>
+            <div class="form-check col-sm-12">
+                <input class="form-check-input" type="radio" value="interregional" formControlName="geoScale"> Межрегиональный (охват 2-х и более регионов)
             </div>
             <div class="form-check col-sm-12">
                 <input class="form-check-input" type="radio" value="federal" formControlName="geoScale"> Федеральный
+            </div>
+            <div class="form-check col-sm-12">
+                <input class="form-check-input" type="radio" value="international" formControlName="geoScale"> Международный
             </div>
         </div>
 
         <label for="grantee">Грантополучатель</label>
         <div class="input-group mb-3">
             <div class="form-check col-sm-12">
-                <input class="form-check-input" type="radio" formControlName="grantRecipient" value="1" checked> Физическое лицо
+                <input class="form-check-input" type="checkbox" formControlName="grantee" value="1"> Физическое лицо
             </div>
             <div class="form-check col-sm-12">
-                <input class="form-check-input" type="radio" formControlName="grantRecipient" value="2"> НКО
+                <input class="form-check-input" type="checkbox" formControlName="grantee" value="2"> НКО
             </div>
             <div class="form-check col-sm-12">
-                <input class="form-check-input" type="radio" formControlName="grantRecipient" value="3"> ИП, ООО
+                <input class="form-check-input" type="checkbox" formControlName="grantee" value="3"> Юридическое лицо
+            </div>
+            <div class="form-check col-sm-12">
+                <input class="form-check-input" type="checkbox" formControlName="grantee" value="4"> Государственная организация
             </div>
         </div>
 
-        <label for="url">Ссылка на грант</label>
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <span class="input-group-text">url:</span>
-            </div>
-            <input type="text" class="form-control" formControlName="url">
-        </div>
 
         <hr class="mb-4">
         <button class="btn btn-primary btn-lg btn-block" type="submit">Нажмите, чтобы добавить</button>

@@ -18,6 +18,8 @@ export class GrantsSearchService {
   addGrant(grant: Grant) {
     this.grants.push(grant);
     const body = JSON.stringify(grant);
+    console.log('GeoScale: ' + body);
+    
     const headers = new Headers({'Content-Type': 'application/json'});
     return this.http.post(this.variables.api + 'grant', body, {headers: headers})
       .map((response: Response) => response.json())
@@ -31,13 +33,17 @@ export class GrantsSearchService {
         let transformedGrants: Grant[] = [];
         for (let grant of grants) {
           transformedGrants.push(new Grant(
-            grant._id,
             grant.name,
-            grant.price,
-            grant.description,
+            grant.grantor,
             grant.url,
+            grant.dateStart,
+            grant.deadline,
+            grant.price,
+            grant.geoScale,
+            grant.grantee,
+            grant.description,
             grant.categories,
-            grant.duration,
+            grant._id
           ))
         }
         this.grants = transformedGrants;

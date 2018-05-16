@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { Grant } from '../../../grant.model';
 import { GrantsSearchService } from '../../grants-search.service';
+import { CITIES } from "./cities";
 
 @Component({
   selector: 'modal-form-app',
@@ -11,11 +12,16 @@ import { GrantsSearchService } from '../../grants-search.service';
 })
 export class ModalFormComponent implements OnInit {
 
+  private cities = CITIES;
+
   grantForm: FormGroup;
+
+  private regionCities = [''];
 
   constructor(private grantsSearchService: GrantsSearchService) {}
 
   onSubmit() {
+    console.log(this.grantForm.value.grantee);
     var grant = new Grant(
       this.grantForm.value.name,
       this.grantForm.value.grantor,
@@ -24,9 +30,11 @@ export class ModalFormComponent implements OnInit {
       this.grantForm.value.deadline,
       this.grantForm.value.price,
       this.grantForm.value.geoScale,
-      this.grantForm.value.grantee,
+      this.grantForm.get('grantee').value,
+      this.cities[this.grantForm.value.region].region,
+      this.grantForm.value.city,
       this.grantForm.value.description,
-      null,
+      this.grantForm.value.categories
     );
     this.grantsSearchService.addGrant(grant)
       .subscribe(
@@ -36,6 +44,9 @@ export class ModalFormComponent implements OnInit {
     this.grantForm.reset();
   }
 
+  setRegion() {
+    this.regionCities = this.cities[this.grantForm.value.region].city;
+  }
 
   ngOnInit() {
     this.grantForm = new FormGroup({
@@ -49,6 +60,8 @@ export class ModalFormComponent implements OnInit {
       grantee: new FormControl(null, Validators.required),
       description: new FormControl(null),
       categories: new FormControl(null),
+      region: new FormControl(null),
+      city: new FormControl(null)
     })
   }
 }

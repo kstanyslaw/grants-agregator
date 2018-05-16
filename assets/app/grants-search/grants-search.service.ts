@@ -17,9 +17,7 @@ export class GrantsSearchService {
 
   addGrant(grant: Grant) {
     this.grants.push(grant);
-    const body = JSON.stringify(grant);
-    console.log('GeoScale: ' + body);
-    
+    const body = JSON.stringify(grant);    
     const headers = new Headers({'Content-Type': 'application/json'});
     return this.http.post(this.variables.api + 'grant', body, {headers: headers})
       .map((response: Response) => response.json())

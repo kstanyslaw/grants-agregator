@@ -8,6 +8,8 @@ export class Grant {
     public price: number,
     public geoScale: string,
     public grantee: string[],
+    public region?: string,
+    public city?: string,
     public description?: string,
     public categories?: string[],
     public id?: string,

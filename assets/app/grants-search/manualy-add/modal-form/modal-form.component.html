@@ -16,7 +16,7 @@
             <div class="input-group-prepend">
                 <span class="input-group-text">url:</span>
             </div>
-            <input type="text" class="form-control" formControlName="url">
+            <input type="text" class="form-control" formControlName="url" placeholder="http://">
             <small class="form-text text-muted">
                 Укажите ссылку именно на сайт, который является официальным. Указание на косвенный источник информации не подходит.
             </small>
@@ -47,7 +47,7 @@
                 <span class="input-group-text">.00</span>
             </div>
         </div>
-
+        
         <label for="geographic-scale">Географический охват гранта</label>
         <div class="input-group mb-3">
             <div class="form-check col-sm-12">
@@ -66,6 +66,33 @@
                 <input class="form-check-input" type="radio" value="international" formControlName="geoScale"> Международный
             </div>
         </div>
+        
+        <label for="location">Локация</label>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="inputEmail4">Регион</label>
+              <select class="form-control" formControlName="region" (change)="setRegion()">
+                  <option *ngFor="let city of cities; let i = index" [value]="i">{{ city.region }}</option>
+              </select>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputPassword4">Город</label>
+                <select class="form-control" formControlName="city" [disabled]="(!grantForm.value.region)">
+                    <option *ngFor="let city of regionCities" [value]="city">{{ city }}</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- <label for="categories">Отрасль</label>
+        <div class="input-group mb-3">
+            <select multiple class="form-control">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+        </div> -->
 
         <label for="grantee">Грантополучатель</label>
         <div class="input-group mb-3">

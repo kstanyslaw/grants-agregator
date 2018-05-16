@@ -54,6 +54,8 @@ router.post('/', function(req, res, next) {
         price: req.body.price,
         geoScale: req.body.geoScale,
         grantee: req.body.grantee,
+        region: req.body.region,
+        city: req.body.city,
         description: req.body.description,
         categories: req.body.categories,
     });

@@ -11,6 +11,8 @@ var schema = new Schema({
     price: { type: Number, required: true },
     geoScale: { type: String, required: true },
     grantee: [{ type: String, required: true }],
+    region: { type: String },
+    city: { type: String },
     description: { type: String },
     categories: [{ type: String }],
 });

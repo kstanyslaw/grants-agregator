@@ -18,7 +18,8 @@ export class GrantDetailsService {
       .map((response: Response) => {
         const grant = response.json().obj;
         var transformedGrant = new Grant(
-          grant.name,
+            grant._id,
+            grant.name,
             grant.grantor,
             grant.url,
             grant.dateStart,
@@ -26,9 +27,10 @@ export class GrantDetailsService {
             grant.price,
             grant.geoScale,
             grant.grantee,
+            grant.region,
+            grant.city,
             grant.description,
             grant.categories,
-            grant._id
         )
         return transformedGrant;
       })

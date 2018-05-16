@@ -7,6 +7,12 @@ form {
     margin-bottom: 1em;
 }
 
+div.collapse {
+    padding-top: 1.3em;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
 .btn.search {
     width: 2.5em;
     background-image: url(http://www.terranus.de/wp-content/themes/terranus/images/search-icon.png);

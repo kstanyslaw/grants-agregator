@@ -1,5 +1,6 @@
 export class Grant {
   constructor (
+    public id: string,
     public name: string,
     public grantor: string,
     public url: string,
@@ -12,6 +13,5 @@ export class Grant {
     public city?: string,
     public description?: string,
     public categories?: string[],
-    public id?: string,
   ) {  }
 }

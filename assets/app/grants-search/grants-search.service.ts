@@ -16,11 +16,14 @@ export class GrantsSearchService {
   constructor(private http: Http) {}
 
   addGrant(grant: Grant) {
-    this.grants.push(grant);
     const body = JSON.stringify(grant);    
     const headers = new Headers({'Content-Type': 'application/json'});
     return this.http.post(this.variables.api + 'grant', body, {headers: headers})
-      .map((response: Response) => response.json())
+    .map((response: Response) => {
+      grant.id = response.json().obj._id;
+      this.grants.push(grant);
+      return grant;
+      })
       .catch((error: Response) => Observable.throw(error.json()));
   }
 
@@ -31,6 +34,7 @@ export class GrantsSearchService {
         let transformedGrants: Grant[] = [];
         for (let grant of grants) {
           transformedGrants.push(new Grant(
+            grant._id,
             grant.name,
             grant.grantor,
             grant.url,
@@ -39,9 +43,10 @@ export class GrantsSearchService {
             grant.price,
             grant.geoScale,
             grant.grantee,
+            grant.region,
+            grant.city,
             grant.description,
             grant.categories,
-            grant._id
           ))
         }
         this.grants = transformedGrants;

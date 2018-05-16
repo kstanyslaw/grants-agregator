@@ -18,11 +18,14 @@ export class ModalFormComponent implements OnInit {
 
   private regionCities = [''];
 
+  private cityPickEnable = false;
+
   constructor(private grantsSearchService: GrantsSearchService) {}
 
   onSubmit() {
     console.log(this.grantForm.value.grantee);
     var grant = new Grant(
+      null,
       this.grantForm.value.name,
       this.grantForm.value.grantor,
       this.grantForm.value.url,
@@ -46,6 +49,7 @@ export class ModalFormComponent implements OnInit {
 
   setRegion() {
     this.regionCities = this.cities[this.grantForm.value.region].city;
+    this.cityPickEnable = true;
   }
 
   ngOnInit() {

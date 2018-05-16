@@ -1,5 +1,5 @@
 <div class="container">
-    <form>
+    <form [formGroup]="searchFilterForm">
         <div class="form-row">
             <div class="input-group mb-3">
                 <input type="text" class="form-control" placeholder="Поиск">
@@ -13,10 +13,18 @@
             </button>
 
             <div class="collapse" [ngClass]="{'show': isShow}">
-                <div class="card card-body">
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica,
-                    craft beer labore wes anderson cred nesciunt sapiente ea proident.
-                </div>
+
+                                <label for="geoScale">Географический охват</label>
+                                <div class="input-group mb-3">
+                                    <select class="form-control" (change)="geoScaleChange()">
+                                        <option>Локальный (городской муниципальный)</option>
+                                        <option>Региональный (областной, краевой)</option>
+                                        <option>Межрегиональный (охват 2-х и более регионов)</option>
+                                        <option>Федеральный</option>
+                                        <option>Международный</option>
+                                    </select>
+                                </div>
+
             </div>
         </div>
     </form>

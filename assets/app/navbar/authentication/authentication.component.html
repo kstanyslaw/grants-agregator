@@ -1,11 +1,13 @@
-<button type="button" class="btn btn-outline-light login" (click)="isShow = true" *ngIf="!isLoggedIn()">Login</button>
-<!-- <button type="button" class="btn btn-outline-light logout" *ngIf="!isLoggedIn()">Logout</button> -->
-<div class="dropdown" [ngClass]="{'show': dropdownShow}" *ngIf="isLoggedIn()">
-    <button class="btn btn-outline-light logout dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" (click)="dropdownShow = !dropdownShow">
-      Logout
+<button type="button" class="btn btn-outline-light login" (click)="isShow = true" *ngIf="!isLoggedIn()">Войти</button>
+
+<div class="btn-group" [ngClass]="{'show': dropdownShow}" *ngIf="isLoggedIn()">
+    <button class="btn btn-outline-light logout dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" (click)="dropdownShow = !dropdownShow">
+      User
     </button>
-    <div class="dropdown-menu" [ngClass]="{'show': dropdownShow}" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" (click)="logout()">Logout</a>
+    <div class="dropdown-menu dropdown-menu-right" [ngClass]="{'show': dropdownShow}" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" >Администрирование</a>
+        <a class="dropdown-item disabled" >Профиль</a>
+        <a class="dropdown-item" (click)="logout()">Выход</a>
     </div>
 </div>
 

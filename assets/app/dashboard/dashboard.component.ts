@@ -9,4 +9,6 @@ export class DashboardComponent implements OnInit {
   constructor() {  }
 
   ngOnInit() {}
+
+  dashboard: string = 'Dashboard Works!';
 }

@@ -9,6 +9,7 @@ import { PricingModule } from './pricing/pricing.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 
 import { AppRoutingModule } from './app.routing';
+import { ProfileModule } from './profile/profile.module';
 
 @NgModule({
     declarations: [
@@ -21,7 +22,8 @@ import { AppRoutingModule } from './app.routing';
         AppRoutingModule,
         GrantDetailsModule,
         PricingModule,
-        DashboardModule
+        DashboardModule,
+        ProfileModule
     ],
     providers: [],
     bootstrap: [AppComponent]

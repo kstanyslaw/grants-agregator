@@ -5,8 +5,8 @@
       User
     </button>
     <div class="dropdown-menu dropdown-menu-right" [ngClass]="{'show': dropdownShow}" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" >Администрирование</a>
-        <a class="dropdown-item disabled" >Профиль</a>
+        <a class="dropdown-item" [routerLink]="['/dashboard']" (click)="dropdownShow = !dropdownShow">Администрирование</a>
+        <a class="dropdown-item" [routerLink]="[ '/profile']" (click)="dropdownShow = !dropdownShow">Профиль</a>
         <a class="dropdown-item" (click)="logout()">Выход</a>
     </div>
 </div>

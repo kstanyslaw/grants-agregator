@@ -19,11 +19,17 @@ export class ModalFormComponent implements OnInit {
   private regionCities = [''];
 
   private cityPickEnable = false;
+  
+  private grantees = [
+    { name: 'НКО', checked: false },
+    { name: 'Физическое лицо', checked: false },
+    { name: 'Юридическое лицо', checked: false },
+    { name: 'Государственная организация', checked: false }    
+  ]
 
   constructor(private grantsSearchService: GrantsSearchService) {}
 
   onSubmit() {
-    console.log(this.grantForm.value.grantee);
     var grant = new Grant(
       null,
       this.grantForm.value.name,
@@ -33,7 +39,7 @@ export class ModalFormComponent implements OnInit {
       this.grantForm.value.deadline,
       this.grantForm.value.price,
       this.grantForm.value.geoScale,
-      this.grantForm.get('grantee').value,
+      this.getGrantees(),
       this.cities[this.grantForm.value.region].region,
       this.grantForm.value.city,
       this.grantForm.value.description,
@@ -52,6 +58,20 @@ export class ModalFormComponent implements OnInit {
     this.cityPickEnable = true;
   }
 
+  setGrantee(i) {
+    this.grantees[i].checked = !this.grantees[i].checked;
+  }
+
+  getGrantees() {
+    var result: Array<string> = [];
+    this.grantees.forEach(grantee => {
+      if(grantee.checked) {
+        result.push(grantee.name);
+      }
+    });
+    return result;
+  }
+
   ngOnInit() {
     this.grantForm = new FormGroup({
       name: new FormControl(null, Validators.required),
@@ -61,7 +81,6 @@ export class ModalFormComponent implements OnInit {
       deadline: new FormControl(null, Validators.required),
       price: new FormControl(null, Validators.required),
       geoScale: new FormControl(null, Validators.required),
-      grantee: new FormControl(null, Validators.required),
       description: new FormControl(null),
       categories: new FormControl(null),
       region: new FormControl(null),

@@ -1,8 +1,7 @@
 <button type="button" class="btn btn-outline-light login" (click)="isShow = true" *ngIf="!isLoggedIn()">Войти</button>
 
 <div class="btn-group" [ngClass]="{'show': dropdownShow}" *ngIf="isLoggedIn()">
-    <button class="btn btn-outline-light logout dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" (click)="dropdownShow = !dropdownShow">
-      User
+    <button class="btn btn-outline-light logout" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" (click)="dropdownShow = !dropdownShow">
     </button>
     <div class="dropdown-menu dropdown-menu-right" [ngClass]="{'show': dropdownShow}" aria-labelledby="dropdownMenuButton">
         <a class="dropdown-item" [routerLink]="['/dashboard']" (click)="dropdownShow = !dropdownShow">Администрирование</a>
@@ -16,7 +15,6 @@
         <div class="modal-content">
 
             <div class="modal-header">
-                <!-- <h4 class="modal-title">Войти</h4> -->
                 <ul class="nav nav-tabs">
                     <li class="nav-item">
                       <a class="nav-link" [ngClass]="{'active': activeTab == 'login'}" (click)="activeTab = 'login'">Войти</a>

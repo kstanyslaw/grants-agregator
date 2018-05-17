@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, ElementRef, HostListener } from "@angular/core";
 import { AuthenticationService } from "./authentication.service";
 
 @Component ({
@@ -8,6 +8,8 @@ import { AuthenticationService } from "./authentication.service";
 })
 
 export class AuthenticationComponent{
+
+    public elementRef;
     
     isShow = false;
 
@@ -15,14 +17,20 @@ export class AuthenticationComponent{
 
     activeTab = 'login';
 
-    constructor(private authenticationService: AuthenticationService) {}
+    constructor(private authenticationService: AuthenticationService, private eRef: ElementRef) {}
 
     isLoggedIn() {
         return this.authenticationService.IsLoggedIn();
     }
 
     logout() {
-        this.authenticationService.logout();
         this.dropdownShow = false;
+        this.authenticationService.logout();
+    }
+
+    @HostListener('document:click', ['$event']) clickout(event) {
+        if(!this.eRef.nativeElement.contains(event.target)) {
+            this.dropdownShow = false;;
+        }
     }
 }

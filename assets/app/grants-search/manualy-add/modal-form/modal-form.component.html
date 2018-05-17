@@ -1,17 +1,17 @@
 <div class="container">
     <form [formGroup]="grantForm" (ngSubmit)="onSubmit()">
         
-        <label for="name">Название грантовой программы</label>
+        <label class="header" for="name">Название грантовой программы</label>
         <div class="input-group mb-3">
             <input type="text" class="form-control" placeholder="Название гранта" formControlName="name">
         </div>
         
-        <label for="grantor">Полное наименование оператора гранта/грантодателя</label>
+        <label class="header" for="grantor">Полное наименование оператора гранта/грантодателя</label>
         <div class="input-group mb-3">
             <input type="text" class="form-control" placeholder="Название гранта" formControlName="grantor">
         </div>
         
-        <label for="url">Ссылка на сайт гранта</label>
+        <label class="header" for="url">Ссылка на сайт гранта</label>
         <div class="input-group mb-3">
             <div class="input-group-prepend">
                 <span class="input-group-text">url:</span>
@@ -22,22 +22,22 @@
             </small>
         </div>
 
-        <label for="description">Описание гранта</label>
+        <label class="header" for="description">Описание гранта</label>
         <div class="input-group mb-3">
             <textarea class="form-control" formControlName="description"></textarea>
         </div>
 
-        <label for="name">Дата объявления конкурса</label>
+        <label class="header" for="name">Дата объявления конкурса</label>
         <div class="input-group mb-3">
             <input type="date" class="form-control" placeholder="Название гранта" formControlName="dateStart">
         </div>
 
-        <label for="name">Дата окончания подачи заявки на конкурс (дедлайн)</label>
+        <label class="header" for="name">Дата окончания подачи заявки на конкурс (дедлайн)</label>
         <div class="input-group mb-3">
             <input type="date" class="form-control" placeholder="Название гранта" formControlName="deadline">
         </div>
 
-        <label for="price">Размер гранта</label>
+        <label class="header" for="price">Размер гранта</label>
         <div class="input-group mb-3">
             <div class="input-group-prepend">
                 <span class="input-group-text">₽</span>
@@ -48,7 +48,7 @@
             </div>
         </div>
         
-        <label for="geographic-scale">Географический охват гранта</label>
+        <label class="header" for="geographic-scale">Географический охват гранта</label>
         <div class="input-group mb-3">
             <div class="form-check col-sm-12">
                 <input class="form-check-input" type="radio" value="local" formControlName="geoScale"> Локальный (городской, муниципальный)
@@ -67,7 +67,7 @@
             </div>
         </div>
         
-        <label for="location">Локация</label>
+        <label class="header" for="location">Локация</label>
         <div class="form-row">
             <div class="form-group col-md-6">
               <label for="region">Регион</label>
@@ -83,31 +83,10 @@
             </div>
         </div>
 
-        <!-- <label for="categories">Отрасль</label>
+        <label class="header" for="grantee">Грантополучатель</label>
         <div class="input-group mb-3">
-            <select multiple class="form-control">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-            </select>
-        </div> -->
-
-        <label for="grantee">Грантополучатель</label>
-        <div class="input-group mb-3">
-            <div class="form-check col-sm-12">
-                <input class="form-check-input" type="checkbox" formControlName="grantee" value="1"> Физическое лицо
-            </div>
-            <div class="form-check col-sm-12">
-                <input class="form-check-input" type="checkbox" formControlName="grantee" value="2"> НКО
-            </div>
-            <div class="form-check col-sm-12">
-                <input class="form-check-input" type="checkbox" formControlName="grantee" value="3"> Юридическое лицо
-            </div>
-            <div class="form-check col-sm-12">
-                <input class="form-check-input" type="checkbox" formControlName="grantee" value="4"> Государственная организация
-            </div>
+            <div class="form-check col-sm-12" *ngFor="let grantee of grantees; let i=index">
+                <input class="form-check-input" type="checkbox" [checked]="grantee.checked" (change)="setGrantee(i)"> {{ grantee.name }} </div>
         </div>
 
 

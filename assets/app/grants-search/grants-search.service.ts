@@ -27,8 +27,10 @@ export class GrantsSearchService {
       .catch((error: Response) => Observable.throw(error.json()));
   }
 
-  getGrant() {
-    return this.http.get(this.variables.api + 'grant')
+  getGrant(filters?) {
+    const body = JSON.stringify(filters);
+    const headers = new Headers({'Content-Type': 'application/json'});
+    return this.http.put(this.variables.api + 'grant', body, {headers: headers})
       .map((response: Response) => {
         const grants = response.json().obj;     
         let transformedGrants: Grant[] = [];

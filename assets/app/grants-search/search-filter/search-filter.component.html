@@ -4,11 +4,11 @@
             <div class="input-group mb-3">
                 <input type="text" class="form-control" placeholder="Поиск">
                 <div class="input-group-append">
-                    <button class="btn btn-outline-secondary search" type="button"></button>
+                    <button class="btn btn-outline-secondary search" type="button" (click)="onSearch()"></button>
                 </div>
             </div>
 
-            <button class="btn btn-secondary btn-sm btn-block" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" (click)="isShow = !isShow">
+            <button class="btn btn-secondary btn-sm btn-block dropdown-toggle" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" (click)="isShow = !isShow">
                 Расширеный поиск
             </button>
 
@@ -16,12 +16,12 @@
 
                                 <label for="geoScale">Географический охват</label>
                                 <div class="input-group mb-3">
-                                    <select class="form-control" (change)="geoScaleChange()">
-                                        <option>Локальный (городской муниципальный)</option>
-                                        <option>Региональный (областной, краевой)</option>
-                                        <option>Межрегиональный (охват 2-х и более регионов)</option>
-                                        <option>Федеральный</option>
-                                        <option>Международный</option>
+                                    <select class="form-control" formControlName="geoScale">
+                                        <option value="local">Локальный (городской муниципальный)</option>
+                                        <option value="region">Региональный (областной, краевой)</option>
+                                        <option value="interregional">Межрегиональный (охват 2-х и более регионов)</option>
+                                        <option value="federal">Федеральный</option>
+                                        <option value="international" >Международный</option>
                                     </select>
                                 </div>
 

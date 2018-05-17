@@ -4,8 +4,8 @@ var router = express.Router();
 const Grant = require('../models/grant');
 
 // Get Grants
-router.get('/', function(req, res, next) {
-    Grant.find()
+router.put('/', function(req, res, next) {
+    Grant.find({'geoScale': req.body.geoScale})
         .select('_id name price')
         .exec(function(err, grants) {
             if (err) {

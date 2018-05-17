@@ -55,7 +55,7 @@ export class ModalFormComponent implements OnInit {
 
   setRegion() {
     this.regionCities = this.cities[this.grantForm.value.region].city;
-    this.cityPickEnable = true;
+    this.grantForm.get('city').enable();
   }
 
   setGrantee(i) {
@@ -86,5 +86,6 @@ export class ModalFormComponent implements OnInit {
       region: new FormControl(null),
       city: new FormControl(null)
     })
+    this.grantForm.get('city').disable();
   }
 }

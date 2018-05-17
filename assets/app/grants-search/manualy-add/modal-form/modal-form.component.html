@@ -72,12 +72,14 @@
             <div class="form-group col-md-6">
               <label for="region">Регион</label>
               <select class="form-control" formControlName="region" (change)="setRegion()">
-                  <option *ngFor="let city of cities; let i = index" [value]="i">{{ city.region }}</option>
+                    <option value="" disabled selected style='display:none;'>Выберите регион</option>
+                    <option *ngFor="let city of cities; let i = index" [value]="i">{{ city.region }}</option>
               </select>
             </div>
             <div class="form-group col-md-6">
                 <label for="city">Город</label>
-                <select class="form-control" formControlName="city" [disabled]="cityPickEnable">
+                <select class="form-control" formControlName="city">
+                    <option value="" disabled selected style='display:none;'>Выберите город</option>
                     <option *ngFor="let city of regionCities" [value]="city">{{ city }}</option>
                 </select>
             </div>

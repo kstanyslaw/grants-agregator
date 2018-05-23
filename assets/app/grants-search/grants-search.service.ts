@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Http, Response, Headers} from '@angular/http';
+import { Http, Response, Headers, URLSearchParams } from '@angular/http';
 import 'rxjs/Rx';
 import {Observable} from 'rxjs';
 
@@ -28,9 +28,9 @@ export class GrantsSearchService {
   }
 
   getGrant(filters?) {
-    const body = JSON.stringify(filters);
+    const body = this.toHttpParams(filters);
     const headers = new Headers({'Content-Type': 'application/json'});
-    return this.http.put(this.variables.api + 'grant', body, {headers: headers})
+    return this.http.get(this.variables.api + 'grant', {params: body})
       .map((response: Response) => {
         const grants = response.json().obj;     
         let transformedGrants: Grant[] = [];
@@ -55,5 +55,13 @@ export class GrantsSearchService {
         return transformedGrants;
       })
       .catch((error: Response) => Observable.throw(error.json()));
+  }
+
+  toHttpParams(params: Object) {
+    let p = new URLSearchParams();
+    for (const key in params) {
+      p.append(key, params[key]);
+    }
+    return p;
   }
 }

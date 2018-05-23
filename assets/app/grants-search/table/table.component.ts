@@ -17,7 +17,7 @@ export class TableComponent implements OnInit {
   constructor(private grantsSearchService: GrantsSearchService, private router: Router) {}
 
   ngOnInit() {
-    this.grantsSearchService.getGrant()
+    this.grantsSearchService.getGrant({})
     .subscribe(
       (grants: Grant[]) => {
         this.grants = grants;

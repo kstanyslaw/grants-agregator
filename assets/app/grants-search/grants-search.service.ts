@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, URLSearchParams } from '@angular/http';
+import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import 'rxjs/Rx';
 import {Observable} from 'rxjs';
 
@@ -13,14 +14,14 @@ export class GrantsSearchService {
 
   private variables: any = VARIABLES;
 
-  constructor(private http: Http) {}
+  constructor(private http: Http, private httpClient: HttpClient) {}
 
   addGrant(grant: Grant) {
     const body = JSON.stringify(grant);    
     const headers = new Headers({'Content-Type': 'application/json'});
     return this.http.post(this.variables.api + 'grant', body, {headers: headers})
     .map((response: Response) => {
-      grant.id = response.json().obj._id;
+      grant._id = response.json().obj._id;
       this.grants.push(grant);
       return grant;
       })
@@ -28,40 +29,12 @@ export class GrantsSearchService {
   }
 
   getGrant(filters?) {
-    const body = this.toHttpParams(filters);
-    const headers = new Headers({'Content-Type': 'application/json'});
-    return this.http.get(this.variables.api + 'grant', {params: body})
-      .map((response: Response) => {
-        const grants = response.json().obj;     
-        let transformedGrants: Grant[] = [];
-        for (let grant of grants) {
-          transformedGrants.push(new Grant(
-            grant._id,
-            grant.name,
-            grant.grantor,
-            grant.url,
-            grant.dateStart,
-            grant.deadline,
-            grant.price,
-            grant.geoScale,
-            grant.grantee,
-            grant.region,
-            grant.city,
-            grant.description,
-            grant.categories,
-          ))
-        }
-        this.grants = transformedGrants;
-        return transformedGrants;
-      })
-      .catch((error: Response) => Observable.throw(error.json()));
-  }
-
-  toHttpParams(params: Object) {
-    let p = new URLSearchParams();
-    for (const key in params) {
-      p.append(key, params[key]);
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      params: new HttpParams({fromObject: filters})
     }
-    return p;
+    return this.httpClient.get<Grant[]>((this.variables.api + 'grant'), httpOptions)
+      .map((grants) => this.grants = grants)
+      .catch((error) => Observable.throw(error.json()));
   }
 }

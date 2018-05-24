@@ -4,6 +4,7 @@ import { HttpModule } from "@angular/http";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from '../app.routing';
+import { HttpClientModule } from '@angular/common/http';
 
 import { GrantsSearchComponent } from './grants-search.component';
 import { TableComponent } from './table/table.component';
@@ -21,7 +22,8 @@ import { GrantsSearchService } from './grants-search.service'
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   declarations: [
     GrantsSearchComponent,

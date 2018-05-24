@@ -1,6 +1,6 @@
 export class Grant {
   constructor (
-    public id: string,
+    public _id: string,
     public name: string,
     public grantor: string,
     public url: string,

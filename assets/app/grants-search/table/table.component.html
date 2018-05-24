@@ -9,7 +9,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let grant of grants" [routerLink]="['/grant/' + grant.id]">
+                    <tr *ngFor="let grant of grants" [routerLink]="['/grant/' + grant._id]">
                         <td>{{ grant.name }}</td>
                         <td>{{ grant.price }}</td>
                     </tr>

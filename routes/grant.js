@@ -15,10 +15,7 @@ router.get('/', function(req, res, next) {
                     error: err
                 })
             }
-            res.status(200).json({
-                message: 'Success',
-                obj: grants
-            })
+            res.status(200).json(grants)
         })
 })
 

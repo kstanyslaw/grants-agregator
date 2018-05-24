@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpModule } from "@angular/http";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from '../app.routing';
@@ -21,7 +20,6 @@ import { GrantsSearchService } from './grants-search.service'
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpModule,
     AppRoutingModule,
     HttpClientModule
   ],

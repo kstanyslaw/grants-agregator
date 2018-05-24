@@ -64,10 +64,7 @@ router.post('/', function(req, res, next) {
                 error: err
             })
         }
-        res.status(201).json({
-            message: 'Saved grant',
-            obj: result
-        })
+        res.status(201).json(result)
     })
 })
 

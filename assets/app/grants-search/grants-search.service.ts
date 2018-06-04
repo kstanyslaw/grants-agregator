@@ -35,4 +35,20 @@ export class GrantsSearchService {
       .map((grants) => this.grants = grants)
       .catch((error) => Observable.throw(error.json()));
   }
+
+  deleteGrant(grantId: string) {
+    // this.grants.splice         NEED TO ADD
+    const token = localStorage.getItem('token')
+      ? localStorage.getItem('token')
+      : '';
+    const httpOptions = {
+      headers: new HttpHeaders({ 'content-Type': 'application/json' }),
+      params: new HttpParams({ fromObject: {
+        // grantId: grantId,
+        token: token
+      }})
+    }
+    return this.httpClient.delete((this.variables.api + 'grant/' + grantId), httpOptions)
+      .catch((error) => Observable.throw(error.json()));
+  }
 }

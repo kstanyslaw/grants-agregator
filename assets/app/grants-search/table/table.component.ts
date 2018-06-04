@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 
 import { Grant } from '../../grant.model';
-// import { TableService } from './table.service';
 import { GrantsSearchService } from '../grants-search.service';
 
 @Component({
@@ -14,7 +12,7 @@ export class TableComponent implements OnInit {
 
   grants: Grant[] = [];
 
-  constructor(private grantsSearchService: GrantsSearchService, private router: Router) {}
+  constructor(private grantsSearchService: GrantsSearchService) {}
 
   ngOnInit() {
     this.grantsSearchService.getGrant({})
@@ -24,5 +22,21 @@ export class TableComponent implements OnInit {
         // console.log(this.grants);
       }
     )
+  }
+
+  checkRole() {
+      if (localStorage.getItem('userRole') != 'administrator') {
+        return false;
+    } else {
+        return true;
+    }
+  }
+
+  deleteGrant(id: string) {
+    this.grantsSearchService.deleteGrant(id)
+    .subscribe(
+      (data) => console.log(data),
+      (error) => console.error(error)
+    );
   }
 }

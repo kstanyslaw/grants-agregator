@@ -1,4 +1,5 @@
 const express = require('express');
+var jwt = require('jsonwebtoken');
 var router = express.Router();
 
 const Grant = require('../models/grant');
@@ -65,6 +66,43 @@ router.post('/', function(req, res, next) {
             })
         }
         res.status(201).json(result)
+    })
+})
+
+// Delete one Grant
+router.delete('/:id', function(req, res, next) {
+    var decoded = jwt.decode(req.query.token);
+    Grant.findById(req.params.id, function(err, grant) {
+        if (err) {
+            return res.status(500).json({
+                title: 'An error occured',
+                error: err
+            })
+        }
+        if (!grant) {
+            return res.status(500).json({
+                title: 'No grant found!',
+                error: {message: 'Grant not found!'}
+            })
+        }
+        if (decoded.user.role !== 'administrator') {
+            return res.status(401).json({
+                title: 'Permission denied!',
+                error: {message: "User's role does not match"}
+            })
+        }
+        grant.remove(function(err, result) {
+            if (err) {
+                return res.status(500).json({
+                  title: 'An error occured',
+                  error: err
+                })
+            }
+            res.status(200).json({
+                message: 'Deleted message',
+                obj: result
+            })
+        })
     })
 })
 
